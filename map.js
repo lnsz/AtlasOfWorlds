@@ -7,6 +7,9 @@ var search = document.getElementById('search');
 var context = canvas.getContext("2d");
 var mapImg = new Image();
 var buttons = [];
+var showMaps =  true;
+var showTiers = true;
+var showUniques = false;
 mapImg.src = 'AtlasComplete.png';
 
 // Screen variables
@@ -263,6 +266,30 @@ window.onload = function () {
         setTimeout(function() {
             
             requestAnimationFrame(draw);
+            
+            showMaps = $("#mapCheckbox").is(':checked');
+            showTiers = $("#tierCheckbox").is(':checked');
+            showUniques = $("#uniqueCheckbox").is(':checked');
+            
+            if(showMaps && !showTiers && !showUniques){
+                mapImg.src = 'AtlasNamed.png';
+            } else if(showMaps && showTiers && !showUniques){
+                mapImg.src = 'AtlasNamedTiers.png';
+            } else if(showMaps && showTiers && showUniques){
+                mapImg.src = 'AtlasComplete.png';
+            } else if(!showMaps && !showTiers && !showUniques){
+                mapImg.src = 'Atlas.png';
+            } else if(!showMaps && showTiers && !showUniques){
+                mapImg.src = 'AtlasTiers.png';
+            } else if(!showMaps && showTiers && showUniques){
+                mapImg.src = 'AtlasUniquesTiers.png';
+            } else if(!showMaps && !showTiers && showUniques){
+                mapImg.src = 'AtlasUniques.png';
+            } else if(showMaps && !showTiers && showUniques){
+                mapImg.src = 'AtlasNamedUniques.png';
+            }
+            
+            
             // Clear canvas
             var origin = context.transformedPoint(0, 0);
             var dimension = context.transformedPoint(canvas.width, canvas.height);
@@ -279,8 +306,10 @@ window.onload = function () {
             height = canvas.height * zoomValue;
             endX = width + originX;
             endY = height + originY
+            var countSelected = 0;
             for (i = 0; i < buttons.length; i++){
-                if (document.getElementById('search').value.length > 0 && buttons[i].name.toUpperCase().includes(document.getElementById('search').value.toUpperCase())){
+                if (countSelected < 30 && document.getElementById('search').value.length > 0 && buttons[i].name.toUpperCase().includes(document.getElementById('search').value.toUpperCase())){
+                    countSelected = countSelected + 1;
                     buttons[i].selected = true;
                 }
                 else{
@@ -288,13 +317,30 @@ window.onload = function () {
                 }
                 buttons[i].draw();
             }
-            var ratioX =  ((mouseX-(1920 - 1697.77777777777)  / 2) /1697.77777777777);
-            var ratioY = mouseY / 955;
-            console.log(ratioX + ", " + ratioY);
+            if (countSelected >= 30){
+                document.getElementById("systemText").innerHTML = "Showing first " + countSelected + " results found";
+            }
+            else{
+                document.getElementById("systemText").innerHTML = "";
+            }
+            if(mouseX < 0 || mouseX > canvas.width || mouseY < 0 || mouseY > canvas.height){
+                isPressed = false;
+                dragStart = null;
+            }
+//            var ratioX =  ((mouseX-(1920 - 1697.77777777777)  / 2) /1697.77777777777);
+//            var ratioY = mouseY / 955;
         }, 1000 / 30);
     }
     
+    $('*').mouseenter(function(){
+        var currentCursor = $(this).css('cursor') ;
 
+        if (currentCursor != "default"){
+            isPressed = false;
+            dragStart = null;
+        }
+    });
+    
     function reset () {
 
         var xLimit1 = (canvas.width - (canvas.width * zoomValue));
