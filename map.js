@@ -143,21 +143,111 @@ function createButtons(){
     buttons.push(new Button("Ramparts Map", 0.7202879581151842, 0.44397905759162304));
     buttons.push(new Button("Spider Forest Map", 0.7952696335078547, 0.4941937172774869));
     buttons.push(new Button("Thicket Map", 0.8151178010471218, 0.4292251308900524));
+    buttons.push(new Button("Whakawairua Tuhau Strand Map", 0.7114528795811528, 0.29842931937172773));
     
-    // T6
+    // T7
     buttons.push(new Button("Armory Map", 0.7314790575916241, 0.6732984293193718));
     buttons.push(new Button("Mud Geyser Map", 0.7591623036649227, 0.49842931937172774));
     buttons.push(new Button("Castle Ruins Map", 0.6778795811518332, 0.19467015706806281));
     buttons.push(new Button("Cells Map", 0.30150523560209336, 0.13712565445026178));
     buttons.push(new Button("Catacombs Map", 0.3274214659685856, 0.5612094240837696));
-    buttons.push(new Button("Strand Map", 0.7114528795811528, 0.2627801047120419));
-    buttons.push(new Button("Wharf Map", 0.6837696335078542, 0.3162303664921466));
-    buttons.push(new Button("Ramparts Map", 0.7202879581151842, 0.44397905759162304));
-    buttons.push(new Button("Spider Forest Map", 0.7952696335078547, 0.4941937172774869));
-    buttons.push(new Button("Thicket Map", 0.8151178010471218, 0.4292251308900524));
+    buttons.push(new Button("Arachnid Tomb Map", 0.2720549738219885, 0.6586387434554973));
+    buttons.push(new Button("Ashen Wood Map", 0.35922774869109886, 0.17801047120418848));
+    buttons.push(new Button("Olmec's Sanctum Catacombs Map", 0.3409685863874338, 0.581151832460733));
     
+
+    // T8
+    buttons.push(new Button("Arachnid Nest Map", 0.3896780104712037, 0.1799633507853403));
+    buttons.push(new Button("Bog Map", 0.592295811518325, 0.15178534031413612));
+    buttons.push(new Button("Cemetery Map", 0.5930628272251313, 0.225130890052356));
+    buttons.push(new Button("Barrows Map", 0.4899869109947644, 0.22198952879581152));
+    buttons.push(new Button("Shore Map", 0.32288743455497304, 0.6366020942408377));
+    buttons.push(new Button("Tropical Island Map", 0.2914921465968577, 0.7276544502617801));
+    buttons.push(new Button("Arena Map", 0.7085078534031423, 0.7381256544502618));
+    buttons.push(new Button("Pier Map", 0.7444371727748702, 0.5862931937172775));
+    buttons.push(new Button("Atoll Map", 0.7102748691099486, 0.5852931937172775));
+    buttons.push(new Button("Maelstrom of Chaos Atoll Map", 0.6926047120418857, 0.5895287958115183));
     
+    // T9
+    buttons.push(new Button("Crypt Map", 0.5482984293193719, 0.24193193717277486));
+    buttons.push(new Button("Museum Map", 0.5275052356020944, 0.2271780104712042));
+    buttons.push(new Button("Promenade Map", 0.4611256544502616, 0.26068586387434556));
+    buttons.push(new Button("Overgrown Shrine Map", 0.39397905759162255, 0.24079057591623038));
+    buttons.push(new Button("Coves Map", 0.33390052356020866, 0.7287015706806282));
+    buttons.push(new Button("Reef Map", 0.2914921465968577, 0.8544502617801047));
+    buttons.push(new Button("Orchard Map", 0.7102748691099486, 0.8020471204188482));
+    buttons.push(new Button("Temple Map", 0.6496073298429326, 0.7235602094240837));
+    buttons.push(new Button("Atoll Map", 0.7102748691099486, 0.5852931937172775));
+    buttons.push(new Button("Acton's Nightmare Overgrown Shrine Map", 0.37866492146596803, 0.2293193717277487));
+    buttons.push(new Button("Hall of Grandmasters Promenade Map", 0.48056282722513083, 0.2680628272251309));
+    buttons.push(new Button("Putrid Cloister Museum Map", 0.5429973821989531, 0.21675392670157068));
+    buttons.push(new Button("Coward's Trial Crypt Map", 0.566557591623037, 0.24607329842931938));
+    buttons.push(new Button("Mao Kun Reef Map", 0.3144633507853395, 0.8408376963350785));
+        
+    // T10
+    buttons.push(new Button("Quay Map", 0.37277486910994706, 0.8335078534031414));
+    buttons.push(new Button("Underground River Map", 0.40281413612565403, 0.8649214659685864));
+    buttons.push(new Button("Malformation Map", 0.6384162303664928, 0.8303664921465969));
+    buttons.push(new Button("Courtyard Map", 0.5318062827225132, 0.31204188481675393));
+    buttons.push(new Button("Colonade Map", 0.4387434554973819, 0.2973350785340314));
+    buttons.push(new Button("Arsenal Map", 0.5734476439790579, 0.29728795811518327));
+    buttons.push(new Button("Terrace Map", 0.3168193717277479, 0.2869109947643979));
+    buttons.push(new Button("The Vinktar Square Courtyard Map", 0.524149214659686, 0.2743455497382199));
+    buttons.push(new Button("Poorjoy's Asylum Temple Map", 0.6372382198952886, 0.7068062827225131));
     
+    // T11
+    buttons.push(new Button("Bazaar Map", 0.3456806282722506, 0.3581151832460733));
+    buttons.push(new Button("Chateau Map", 0.6394162303664928, 0.29628795811518327));
+    buttons.push(new Button("Wasteland Map", 0.5595005235602097, 0.35087958115183243));
+    buttons.push(new Button("Excavation Map", 0.5954188481675396, 0.7801047120418848));
+    buttons.push(new Button("Underground Sea Map", 0.481740837696335, 0.8052356020942408));
+    buttons.push(new Button("Torture Chamber Map", 0.42384031413612533, 0.766586387434555));
+    buttons.push(new Button("Precinct Map", 0.3737198952879576, 0.7654450261780105));
+    buttons.push(new Button("Perandus Manor Chateau Map", 0.6507853403141368, 0.3204188481675393));
+    buttons.push(new Button("Oba's Cursed Trove Torture Chamber Map", 0.43933246073298404, 0.7706806282722513));
+    
+    // T12
+    buttons.push(new Button("Shipyard Map", 0.30032722513088916, 0.3622565445026178));
+    buttons.push(new Button("Ivory Temple Map", 0.3631727748691093, 0.6785340314136126));
+    buttons.push(new Button("Residence Map", 0.43720942408376934, 0.7182303664921466));
+    buttons.push(new Button("Crematorium Map", 0.6042539267015712, 0.36120942408376966));
+    buttons.push(new Button("Estuary Map", 0.6607984293193725, 0.4407905759162304));
+    buttons.push(new Button("Necropolis Map", 0.6046649214659691, 0.7225130890052356));
+    buttons.push(new Button("Vault Map", 0.4664267015706805, 0.7664921465968586));
+    buttons.push(new Button("Plateau Map", 0.46919371727748677, 0.6586387434554973));
+    buttons.push(new Button("Death and Taxes Necropolis Map", 0.619924083769634, 0.7393612565445026));
+        
+    // T13
+    buttons.push(new Button("Gorge Map", 0.5388743455497383, 0.7811518324607329));
+    buttons.push(new Button("Scriptorium Map", .4261963350785337, 0.631413612565445));
+    buttons.push(new Button("Plaza Map", 0.3863219895287953, 0.6397905759162303));
+    buttons.push(new Button("High Gardens Map", 0.3221204188481667, 0.4869109947643979));
+    buttons.push(new Button("Waterways Map", 0.37159685863874287, 0.4167539267015707));    
+    buttons.push(new Button("Beacon Map", 0.6974947643979067, 0.5109476439790576));
+    buttons.push(new Button("Sulphur Wastes Map", 0.6294031413612571, 0.46810994764397906));
+    buttons.push(new Button("Lair Map", 0.6299921465968592, 0.6491675392670158));
+    
+    // T14
+    buttons.push(new Button("Palace Map", 0.3674738219895282, 0.47010994764397906));
+    buttons.push(new Button("Maze Map", 0.40045811518324564, 0.556020942408377));
+    buttons.push(new Button("Springs Map", 0.42248429319371694, 0.39467015706806285));
+    buttons.push(new Button("Volcano Map", 0.6292251308900529, 0.5486910994764398));
+    buttons.push(new Button("Mineral Pools Map", 0.5954188481675396, 0.581151832460733));    
+    buttons.push(new Button("Shrine Map", 0.5376963350785342, 0.7319371727748691));
+    
+    // T15
+    buttons.push(new Button("Colosseum Map",0.43579842931937146, 0.5455497382198953));
+    buttons.push(new Button("Dark Forest Map", 0.408704188481675, 0.4544502617801047));
+    buttons.push(new Button("Abyss Map", 0.5783376963350789, 0.6596387434554973));
+    buttons.push(new Button("Overgrown Ruin Map", 0.4589476439790574, 0.35906806282722514));
+    buttons.push(new Button("Core Map", 0.5960078534031418, 0.44597905759162304));    
+    
+    // T16
+    buttons.push(new Button("Pit of the Chimera Map", 0.4611256544502616, 0.5905759162303665));
+    buttons.push(new Button("Maze of the Minotaur Map", 0.554777486910995, 0.5916230366492147));
+    buttons.push(new Button("Forge of the Phoenix Map", 0.5545994764397908, 0.4198952879581152));
+    buttons.push(new Button("Lair of the Hydra Map", 0.4587696335078532, 0.4157068062827225));
+    buttons.push(new Button("Vaal Temple Map", 0.3611727748691093, 0.5329371727748691)); 
 }
 
 
