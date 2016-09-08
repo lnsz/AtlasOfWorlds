@@ -6,11 +6,17 @@ canvas.height = window.innerHeight;
 var search = document.getElementById('search');
 var context = canvas.getContext("2d");
 var mapImg = new Image();
+var tiersImg = new Image();
+var namesImg = new Image();
+var uniquesImg = new Image();
 var buttons = [];
-var showMaps =  true;
+var showNames =  true;
 var showTiers = true;
 var showUniques = false;
-mapImg.src = 'AtlasComplete.png';
+mapImg.src = 'Atlas.png';
+tiersImg.src = 'AtlasTier.png'
+namesImg.src = 'AtlasNames.png';
+uniquesImg.src = 'AtlasUnique.png';
 
 // Screen variables
 var zoomValue = 1;
@@ -267,28 +273,9 @@ window.onload = function () {
             
             requestAnimationFrame(draw);
             
-            showMaps = $("#mapCheckbox").is(':checked');
+            showNames = $("#mapCheckbox").is(':checked');
             showTiers = $("#tierCheckbox").is(':checked');
             showUniques = $("#uniqueCheckbox").is(':checked');
-            
-            if(showMaps && !showTiers && !showUniques){
-                mapImg.src = 'AtlasNamed.png';
-            } else if(showMaps && showTiers && !showUniques){
-                mapImg.src = 'AtlasNamedTiers.png';
-            } else if(showMaps && showTiers && showUniques){
-                mapImg.src = 'AtlasComplete.png';
-            } else if(!showMaps && !showTiers && !showUniques){
-                mapImg.src = 'Atlas.png';
-            } else if(!showMaps && showTiers && !showUniques){
-                mapImg.src = 'AtlasTiers.png';
-            } else if(!showMaps && showTiers && showUniques){
-                mapImg.src = 'AtlasUniquesTiers.png';
-            } else if(!showMaps && !showTiers && showUniques){
-                mapImg.src = 'AtlasUniques.png';
-            } else if(showMaps && !showTiers && showUniques){
-                mapImg.src = 'AtlasNamedUniques.png';
-            }
-            
             
             // Clear canvas
             var origin = context.transformedPoint(0, 0);
@@ -300,6 +287,17 @@ window.onload = function () {
 
             // Draw map
             context.drawImage(mapImg, (canvas.width - mapWidth) / 2, 0, mapWidth, mapHeight);
+            if(showNames){
+               context.drawImage(namesImg, (canvas.width - mapWidth) / 2, 0, mapWidth, mapHeight);  
+            }
+            if(showTiers){
+               context.drawImage(tiersImg, (canvas.width - mapWidth) / 2, 0, mapWidth, mapHeight);  
+            }
+            
+           if(showUniques){
+               context.drawImage(uniquesImg, (canvas.width - mapWidth) / 2, 0, mapWidth, mapHeight);  
+            }
+            
             
             // Set some variables
             width = canvas.width * zoomValue;
