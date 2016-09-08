@@ -58,15 +58,13 @@ function trackTransforms(context){
         pt.x = x; pt.y = y;
         return pt.matrixTransform(xform.inverse());
     }
+    
 }
 
 $(window).resize(function() {
     // Reset variables
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    mapHeight = canvas.height;
-    mapWidth = canvas.height * 16.0 / 9.0;
-    createButtons();
+
+    window.location.reload(false); 
 });
 
 
@@ -74,7 +72,6 @@ class Button{
     constructor(name, x, y){
         this.name = name;
         this.x = ((canvas.width - mapWidth) / 2) + x * mapWidth;
-        console.log(x);
         this.y = canvas.height * y;
         this.radius = canvas.width / 150;
         this.selected = false;
@@ -136,16 +133,30 @@ function createButtons(){
     buttons.push(new Button("Primordial Pool Map", 0.2147434554973809, 0.4858167539267016));
     buttons.push(new Button("Burial Chamber Map", 0.2518287958115172, 0.5420141361256545));
     
-    // T5
-    buttons.push(new Button("Dunes Map", 0.7542722513089016, 0.2649743455497382));
-    buttons.push(new Button("Peninsula Map", 0.7346020942408388, 0.35602094240837695));
-    buttons.push(new Button("Phantasmagoria Map", 0.1972513089005222, 0.5664921465968586));
-    buttons.push(new Button("Spider Lair Map", 0.8215968586387449, 0.48206282722513089));
-    buttons.push(new Button("Tower Map", 0.7880235602094254, 0.5926230366492147));
-    buttons.push(new Button("Pit Map", 0.2172774869109935, 0.16753926701570682));
-    buttons.push(new Button("Mesa Cemetery Map", 0.2543848167539256, 0.2784397905759162));
-    buttons.push(new Button("Primordial Pool Map", 0.2147434554973809, 0.4858167539267016));
-    buttons.push(new Button("Burial Chamber Map", 0.2518287958115172, 0.5420141361256545));
+    // T6
+    buttons.push(new Button("Racecourse Map", 0.25597382198952767, 0.13179581151832462));
+    buttons.push(new Button("Quarry Map", 0.28365706806282626, 0.21675392670157068));
+    buttons.push(new Button("Canyon Map", 0.26106387434554864, 0.4326607329842932));
+    buttons.push(new Button("Vaal City Map", 0.28836910994764303, 0.5999528795811518));
+    buttons.push(new Button("Strand Map", 0.7114528795811528, 0.2627801047120419));
+    buttons.push(new Button("Wharf Map", 0.6837696335078542, 0.3162303664921466));
+    buttons.push(new Button("Ramparts Map", 0.7202879581151842, 0.44397905759162304));
+    buttons.push(new Button("Spider Forest Map", 0.7952696335078547, 0.4941937172774869));
+    buttons.push(new Button("Thicket Map", 0.8151178010471218, 0.4292251308900524));
+    
+    // T6
+    buttons.push(new Button("Armory Map", 0.7314790575916241, 0.6732984293193718));
+    buttons.push(new Button("Mud Geyser Map", 0.7591623036649227, 0.49842931937172774));
+    buttons.push(new Button("Castle Ruins Map", 0.6778795811518332, 0.19467015706806281));
+    buttons.push(new Button("Cells Map", 0.30150523560209336, 0.13712565445026178));
+    buttons.push(new Button("Catacombs Map", 0.3274214659685856, 0.5612094240837696));
+    buttons.push(new Button("Strand Map", 0.7114528795811528, 0.2627801047120419));
+    buttons.push(new Button("Wharf Map", 0.6837696335078542, 0.3162303664921466));
+    buttons.push(new Button("Ramparts Map", 0.7202879581151842, 0.44397905759162304));
+    buttons.push(new Button("Spider Forest Map", 0.7952696335078547, 0.4941937172774869));
+    buttons.push(new Button("Thicket Map", 0.8151178010471218, 0.4292251308900524));
+    
+    
     
 }
 
@@ -190,7 +201,6 @@ window.onload = function () {
             var ratioX =  ((mouseX-(1920 - 1697.77777777777)  / 2) /1697.77777777777);
             var ratioY = mouseY / 955;
             console.log(ratioX + ", " + ratioY);
-            console.log(document.getElementById('search').value);
         }, 1000 / 30);
     }
     
