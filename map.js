@@ -13,6 +13,7 @@ var buttons = [];
 var showNames =  true;
 var showTiers = true;
 var showUniques = false;
+var landscape = true;
 mapImg.src = 'Atlas.png';
 tiersImg.src = 'AtlasTier.png'
 namesImg.src = 'AtlasNames.png';
@@ -26,8 +27,10 @@ var width = 0;
 var height = 0;
 var endX = 0;
 var endY = 0;
-var mapHeight = canvas.height;
-var mapWidth = canvas.height * 16.0 / 9.0;
+var mapHeight = 0;
+var mapWidth = 0;
+var mapX = 0;
+var mapY = 0;
 
 // Mouse varaibles
 var mouseX = 0;
@@ -80,8 +83,8 @@ $(window).resize(function() {
 class Button{
     constructor(name, x, y){
         this.name = name;
-        this.x = ((canvas.width - mapWidth) / 2) + x * mapWidth;
-        this.y = canvas.height * y;
+        this.x = mapX + x * mapWidth;
+        this.y = mapY + y * mapHeight;
         this.radius = canvas.width / 150;
         this.selected = false;
     }
@@ -263,8 +266,19 @@ function createButtons(){
 window.onload = function () {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    mapHeight = canvas.height;
-    mapWidth = canvas.height * 16.0 / 9.0;
+    if ((canvas.width / canvas.height) > 16.0 / 9.0){
+        mapHeight = canvas.height;
+        mapWidth = canvas.height * 16.0 / 9.0;
+        mapX = (canvas.width - mapWidth) / 2;
+        mapY = 0;
+        landscape = true;
+    } else{
+        landscape = false;
+        mapHeight = canvas.width * 9.0 / 16.0;
+        mapWidth = canvas.width;
+        mapX = 0;
+        mapY = (canvas.height - mapHeight) / 2;;
+    }
     createButtons();
     trackTransforms(context);
     
@@ -284,18 +298,21 @@ window.onload = function () {
             if (!isPressed){
                 reset();
             }
-
+            
             // Draw map
-            context.drawImage(mapImg, (canvas.width - mapWidth) / 2, 0, mapWidth, mapHeight);
+            if (landscape){
+
+            }
+            context.drawImage(mapImg, mapX, mapY, mapWidth, mapHeight);
             if(showNames){
-               context.drawImage(namesImg, (canvas.width - mapWidth) / 2, 0, mapWidth, mapHeight);  
+               context.drawImage(namesImg, mapX, mapY, mapWidth, mapHeight);  
             }
             if(showTiers){
-               context.drawImage(tiersImg, (canvas.width - mapWidth) / 2, 0, mapWidth, mapHeight);  
+               context.drawImage(tiersImg, mapX, mapY, mapWidth, mapHeight);  
             }
             
            if(showUniques){
-               context.drawImage(uniquesImg, (canvas.width - mapWidth) / 2, 0, mapWidth, mapHeight);  
+               context.drawImage(uniquesImg, mapX, mapY, mapWidth, mapHeight);  
             }
             
             
