@@ -5,21 +5,43 @@
         <title>Atlas of Worlds</title>
         
         <style>
+            canvas {
+                position: absolute;
+                z-index: 1;
+              }
             input[type=text] {
-                position:absolute;
+                position: absolute;
+                text-align:center;
+                z-index: 2;
+                width: 20%;
+                height: 3%;
+                right: 39%;
+                top: 96%;
+                padding: 0px 20px 0px 40px;
+                border-radius: 25px;
+                background-color: black;
+                color: white;
+                border-color: #77726C;
+                border-style:solid;
+            }   
+            
+            input:focus {
+                outline: none;
             }
-        </style>
+            </style>
     </head>
     
     <body>
         <canvas id='canvas'></canvas>
+        
         <body bgcolor="#000000"> 
-
-
-        <script type="text/javascript" src="map.js"></script>
-        <form>
-          <input type="text" autofocus id='search' name="search" placeholder="Search..">
-        </form>
+            
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+            
+        <script id="map" type="text/javascript" src="map.js"></script>
+            
+        <input type="text" autofocus id='search' name="search" placeholder="Search.." class="noSelect">
+    
         
     </body>
 </html>
