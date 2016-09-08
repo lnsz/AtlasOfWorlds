@@ -280,7 +280,7 @@ window.onload = function () {
             endX = width + originX;
             endY = height + originY
             for (i = 0; i < buttons.length; i++){
-                if (buttons[i].name.toUpperCase().includes(document.getElementById('search').value.toUpperCase())){
+                if (document.getElementById('search').value.length > 0 && buttons[i].name.toUpperCase().includes(document.getElementById('search').value.toUpperCase())){
                     buttons[i].selected = true;
                 }
                 else{
