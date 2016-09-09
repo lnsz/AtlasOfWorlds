@@ -365,7 +365,7 @@ window.onload = function () {
             context.lineWidth = 3;
             context.strokeStyle = 'red';
             for (i = 0; i < buttons.length; i++){
-                if (countSelected <  && document.getElementById('search').value.length > 0 && 
+                if (countSelected < 30 && document.getElementById('search').value.length > 0 && 
                     (buttons[i].name.toUpperCase().includes(document.getElementById('search').value.toUpperCase()) || buttons[i].tier == document.getElementById('search').value)){
                     countSelected = countSelected + 1;
                     buttons[i].selected = true;
@@ -376,7 +376,7 @@ window.onload = function () {
                 buttons[i].draw();
             }
 
-            if (countSelected >= 124){
+            if (countSelected >= 30){
                 document.getElementById("systemText").innerHTML = "Showing first " + countSelected + " results found";
             }
             else{
