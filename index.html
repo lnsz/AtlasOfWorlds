@@ -84,6 +84,22 @@
                 text-align: center;
                 text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
             }
+            p[id="smallTextCheckboxText"]{
+                top: 92.5%;
+                left: 86%;
+                margin-right: -50%;
+                text-align: center;
+                text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            }
+            p[id="largeTextCheckboxText"]{
+                top: 95%;
+                left: 86%;
+                margin-right: -50%;
+                text-align: center;
+                text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            }
+            
+            
             input[type=checkbox] {
                 position: absolute;
                 z-index: 2;
@@ -113,6 +129,18 @@
                 margin-right: -50%;
                 transform: translate(-50%, -50%);
             }
+            input[id="smallTextCheckbox"]{
+                top: 95.5%;
+                left: 85%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
+            }
+            input[id="largeTextCheckbox"]{
+                top: 98%;
+                left: 85%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
+            }
             </style>
     </head>
     
@@ -137,15 +165,35 @@
         <p id="systemText"></p>
             
         <input type="text" autofocus id='search' name="search" placeholder="Search.." class="noSelect">
-            
+        
+        <div>
         <input type="checkbox" id="mapCheckbox" checked="checked"><br>
         <p id="mapCheckboxText">Show map names</p>
+        </div>
+        
+        <div>
         <input type="checkbox" id="tierCheckbox" checked="checked"><br>
         <p id="tierCheckboxText">Show map tiers</p>
+        </div>
+        
+        <div>
         <input type="checkbox" id="uniqueCheckbox"><br>
         <p id="uniqueCheckboxText">Show unique maps</p>
+        </div>
+        
+        <div>
         <input type="checkbox" id="upgradesCheckbox"><br>
         <p id="upgradesCheckboxText">Show upgrade path</p>
+        </div>
+        
+        <div>
+        <input type="checkbox" id="smallTextCheckbox" name="sizeSelector"><br>
+        <p id="smallTextCheckboxText">Small Text</p>
+        
+        <input type="checkbox" id="largeTextCheckbox" name="sizeSelector" checked="checked"><br>
+        <p id="largeTextCheckboxText">Large Text</p>
+        </div>
+
         
     </body>
 </html>
