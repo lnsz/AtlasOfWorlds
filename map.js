@@ -119,8 +119,6 @@ class Button{
       if (this.selected){
           context.beginPath();
           context.ellipse(this.x - this.radius , this.y - this.radius, this.radius, this.radius, 0, 2 * Math.PI, 0);
-          context.lineWidth = 3;
-          context.strokeStyle = 'red';
           context.stroke();
       }
     }
@@ -318,9 +316,9 @@ window.onload = function () {
             showUniques = $("#uniqueCheckbox").is(':checked');
             showUpgrades = $("#upgradesCheckbox").is(':checked');
             isLarge = $("#largeTextCheckbox").is(':checked');
-$('input[type="checkbox"]').on('change', function() {
-   $(this).siblings('input[type="checkbox"]').prop('checked', false);
-});
+            $('input[type="checkbox"]').on('change', function() {
+               $(this).siblings('input[type="checkbox"]').prop('checked', false);
+            });
 
             
             // Clear canvas
@@ -337,7 +335,6 @@ $('input[type="checkbox"]').on('change', function() {
                context.drawImage(upgradesImg, mapX, mapY, mapWidth, mapHeight);  
             }
             if(showNames){
-                            console.log(isLarge);
                 if(isLarge){
                     context.drawImage(namesImg, mapX, mapY, mapWidth, mapHeight);  
                 }
@@ -364,6 +361,9 @@ $('input[type="checkbox"]').on('change', function() {
             endX = width + originX;
             endY = height + originY
             var countSelected = 0;
+            
+            context.lineWidth = 3;
+            context.strokeStyle = 'red';
             for (i = 0; i < buttons.length; i++){
                 if (countSelected < 30 && document.getElementById('search').value.length > 0 && 
                     (buttons[i].name.toUpperCase().includes(document.getElementById('search').value.toUpperCase()) || buttons[i].tier == document.getElementById('search').value)){
@@ -375,6 +375,7 @@ $('input[type="checkbox"]').on('change', function() {
                 }
                 buttons[i].draw();
             }
+
             if (countSelected >= 30){
                 document.getElementById("systemText").innerHTML = "Showing first " + countSelected + " results found";
             }
@@ -387,7 +388,7 @@ $('input[type="checkbox"]').on('change', function() {
             }
 //            var ratioX =  ((mouseX-(1920 - 1697.77777777777)  / 2) /1697.77777777777);
 //            var ratioY = mouseY / 955;
-        }, 1000 / 30);
+        }, 1000 / 60);
     }
     
     $('*').mouseenter(function(){
