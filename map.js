@@ -10,17 +10,22 @@ var tiersImg = new Image();
 var namesImg = new Image();
 var uniquesImg = new Image();
 var upgradesImg = new Image();
+var smallNamesImg = new Image();
+var smallUniquesImg = new Image();
 var buttons = [];
 var showNames =  true;
 var showTiers = true;
 var showUniques = false;
 var showUpgrades = false;
 var landscape = true;
+var isLarge = true;
 mapImg.src = 'Atlas.png';
 tiersImg.src = 'AtlasTier.png'
 namesImg.src = 'AtlasNames.png';
 uniquesImg.src = 'AtlasUnique.png';
 upgradesImg.src = 'AtlasUpgrades.png';
+smallNamesImg.src = 'AtlasNamesSmall.png';
+smallUniquesImg.src = 'AtlasUniquesSmall.png';
 
 // Screen variables
 var zoomValue = 1;
@@ -312,6 +317,11 @@ window.onload = function () {
             showTiers = $("#tierCheckbox").is(':checked');
             showUniques = $("#uniqueCheckbox").is(':checked');
             showUpgrades = $("#upgradesCheckbox").is(':checked');
+            isLarge = $("#largeTextCheckbox").is(':checked');
+$('input[type="checkbox"]').on('change', function() {
+   $(this).siblings('input[type="checkbox"]').prop('checked', false);
+});
+
             
             // Clear canvas
             var origin = context.transformedPoint(0, 0);
@@ -322,19 +332,29 @@ window.onload = function () {
             }
             
             // Draw map
-
             context.drawImage(mapImg, mapX, mapY, mapWidth, mapHeight);
-             if(showUpgrades){
+            if(showUpgrades){
                context.drawImage(upgradesImg, mapX, mapY, mapWidth, mapHeight);  
             }
             if(showNames){
-               context.drawImage(namesImg, mapX, mapY, mapWidth, mapHeight);  
+                            console.log(isLarge);
+                if(isLarge){
+                    context.drawImage(namesImg, mapX, mapY, mapWidth, mapHeight);  
+                }
+                else{
+                    context.drawImage(smallNamesImg, mapX, mapY, mapWidth, mapHeight); 
+                }
             }
             if(showTiers){
-               context.drawImage(tiersImg, mapX, mapY, mapWidth, mapHeight);  
+                  context.drawImage(tiersImg, mapX, mapY, mapWidth, mapHeight);  
             }
-           if(showUniques){
-               context.drawImage(uniquesImg, mapX, mapY, mapWidth, mapHeight);  
+            if(showUniques){
+               if(isLarge){
+                   context.drawImage(uniquesImg, mapX, mapY, mapWidth, mapHeight);  
+               }
+                else{
+                    context.drawImage(smallUniquesImg, mapX, mapY, mapWidth, mapHeight); 
+                }
             }
 
             
