@@ -67,7 +67,6 @@ var loadButtons = function(){
     createButtons();
     if (localStorage.getItem("buttons") != null){
         var temp = (JSON.parse(localStorage.getItem("buttons")));
-        console.log(temp);
         for (i = 0; i < temp.length; i++){
             buttons[i].completed = temp[i].completed;
         }
