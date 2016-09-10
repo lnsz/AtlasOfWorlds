@@ -20,6 +20,7 @@ var smallNamesImg = new Image();
 var smallUniquesImg = new Image();
 var selectedImg = new Image();
 var completedImg = new Image();
+var selectedButtons = [];
 var buttons = [];
 var showNames =  true;
 var showTiers = true;
@@ -27,7 +28,9 @@ var showUniques = false;
 var showUpgrades = false;
 var landscape = true;
 var isLarge = true;
+var shouldDraw = true;
 atlasTracker = localStorage;
+
 mapImg.src = 'Atlas.png';
 tiersImg.src = 'AtlasTier.png'
 namesImg.src = 'AtlasNames.png';
@@ -57,6 +60,7 @@ var lastX = 0;
 var lastY = 0;
 var dragStart;
 var isPressed = false;
+var isKeyPressed = false;
 
 // Remove scroll bars
 document.documentElement.style.overflow = 'hidden';  // firefox, chrome
@@ -68,7 +72,10 @@ var loadButtons = function(){
     if (localStorage.getItem("buttons") != null){
         var temp = (JSON.parse(localStorage.getItem("buttons")));
         for (i = 0; i < temp.length; i++){
-            buttons[i].completed = temp[i].completed;
+            if (temp[i].completed){
+                buttons[i].completed = temp[i].completed;
+                addInstance(i, selectedButtons);
+            }
         }
     }
 }
@@ -82,6 +89,7 @@ function trackTransforms(context){
     context.scale = function(sx, sy){
         xform = xform.scaleNonUniform(sx, sy);
         zoomValue = zoomValue * sx;
+        shouldDraw = true;
         return scale.call(context, sx, sy);
     };
 
@@ -90,6 +98,7 @@ function trackTransforms(context){
         xform = xform.translate(dx, dy);
         originX = xform.e;
         originY = xform.f;
+        shouldDraw = true;
         return translate.call(context, dx, dy);
     };
 
@@ -123,6 +132,25 @@ $(window).resize(function() {
     }
 });
 
+$(document).on("click" || "change", "input[type='checkbox']", function () {
+    // Handle Checkboxes
+    showNames = $("#mapCheckbox").is(':checked');
+    showTiers = $("#tierCheckbox").is(':checked');
+    showUniques = $("#uniqueCheckbox").is(':checked');
+    showUpgrades = $("#upgradesCheckbox").is(':checked');
+    $(this).siblings('input[type="checkbox"]').prop('checked', false);
+    isLarge = $("#largeTextCheckbox").is(':checked');
+    shouldDraw = true;
+});
+
+$('*').mouseenter(function(){
+    var currentCursor = $(this).css('cursor') ;
+    if (currentCursor != "default"){
+        isPressed = false;
+        dragStart = null;
+    }
+});
+
 function setCanvas(){
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -141,99 +169,76 @@ function setCanvas(){
     }
 }
 
+function removeInstance(value, array){
+    // Remove instance of value from array
+    var index = array.indexOf(i);
+    if (index > - 1){
+        selectedButtons.splice(index, 1);
+    }
+    
+}
+
+function addInstance(value, array){
+    // Adds the value to the array if it does not already exist
+    if (array.indexOf(value) < 0){
+        array.push(value);
+    }
+    
+}
+
 function reset () {
     var xLimit1 = (canvas.width - (canvas.width * zoomValue));
     var yLimit1 = (canvas.height - (canvas.height * zoomValue));
     var xLimit2 = - xLimit1 + canvas.width;
     var yLimit2 = - yLimit1 + canvas.height;
-    if (originX < xLimit1){
-        context.translate((xLimit1 - originX) / 40.0, 0);
+    var shouldReset = false;
+    if (originX < xLimit1 - 0.1){
+        if(!isPressed){
+            context.translate((xLimit1 - originX) / 10.0, 0);
+        }
+        shouldReset = true;
     }
-    if (originY < yLimit1){
-        context.translate(0,  (yLimit1 - originY) / 40.0);
+    if (originY < yLimit1 - 0.1){
+        if(!isPressed){
+            context.translate(0,  (yLimit1 - originY) / 10.0);
+        }
+        shouldReset = true;
     }
-    if (endX > xLimit2){
-       context.translate((xLimit2 - endX) / 40.0, 0);
+    if (endX > xLimit2 + 0.1){
+        if(!isPressed){
+            context.translate((xLimit2 - endX) / 10.0, 0);
+        }
+        shouldReset = true;
     }
-    if (endY > yLimit2){
-      context.translate(0,  (yLimit2 - endY) / 40.0);
+    if (endY > yLimit2 + 0.1){
+        if(!isPressed){
+            context.translate(0,  (yLimit2 - endY) / 10.0);
+        }
+        shouldReset = true;
     }
+    return shouldReset;
 }
 
-var draw = function () {
-    setTimeout(function() {
-
-        requestAnimationFrame(draw);
-
-        // Handle Checkboxes
-        showNames = $("#mapCheckbox").is(':checked');
-        showTiers = $("#tierCheckbox").is(':checked');
-        showUniques = $("#uniqueCheckbox").is(':checked');
-        showUpgrades = $("#upgradesCheckbox").is(':checked');
-        isLarge = $("#largeTextCheckbox").is(':checked');
-        $('input[type="checkbox"]').on('change', function() {
-           $(this).siblings('input[type="checkbox"]').prop('checked', false);
-        });
-
-
-        // Clear canvas
-        var origin = context.transformedPoint(0, 0);
-        var dimension = context.transformedPoint(canvas.width, canvas.height);
-        context.clearRect(origin.x, origin.y, dimension.x - origin.x, dimension.y - origin.y);
-        if (!isPressed){
-            reset();
-        }
-
-        // Draw map
-
-        context.drawImage(mapImg, mapX, mapY, mapWidth, mapHeight);
-        if(showUpgrades){
-           context.drawImage(upgradesImg, mapX, mapY, mapWidth, mapHeight);  
-        }
-        if(showNames){
-            if(isLarge){
-                context.drawImage(namesImg, mapX, mapY, mapWidth, mapHeight);  
-            }
-            else{
-                context.drawImage(smallNamesImg, mapX, mapY, mapWidth, mapHeight); 
-            }
-        }
-        if(showTiers){
-              context.drawImage(tiersImg, mapX, mapY, mapWidth, mapHeight);  
-        }
-        if(showUniques){
-           if(isLarge){
-               context.drawImage(uniquesImg, mapX, mapY, mapWidth, mapHeight);  
-           }
-            else{
-                context.drawImage(smallUniquesImg, mapX, mapY, mapWidth, mapHeight); 
-            }
-        }
-
-        // Set some variables
-        width = canvas.width * zoomValue;
-        height = canvas.height * zoomValue;
-        endX = width + originX;
-        endY = height + originY
-
-        // Draw selected buttons
+function checkButtons(){
+// Draw selected buttons
         var countSelected = 0;
-//        searchContext.lineWidth = 3;
-//        searchContext.strokeStyle = 'red';
-//        searchContext.beginPath();
-        var searchLength = document.getElementById('search').value.length;
         var searchValue = document.getElementById('search').value;
+        var searchLength = searchValue.length;
+        var index = 0;
         for (i = 0; i < buttons.length; i++){
             if (countSelected < maxSearchResults && searchLength > 0 && 
             (buttons[i].name.toUpperCase().includes(searchValue.toUpperCase()) || 
             buttons[i].tier == searchValue)){
                 countSelected = countSelected + 1;
                 buttons[i].selected = true;
+                addInstance(i, selectedButtons);
             }
             else{
                 buttons[i].selected = false;
+                if(!buttons[i].completed){
+                    removeInstance(i, selectedButtons);
+                }
             }
-            buttons[i].draw();
         }
         if (countSelected >= maxSearchResults){
             document.getElementById("systemText").innerHTML = "Showing first " + countSelected + " results found";
@@ -241,19 +246,68 @@ var draw = function () {
         else{
             document.getElementById("systemText").innerHTML = "";
         }
-        //searchContext.stroke();
-        
-        // var ratioX =  ((mouseX-(1920 - 1697.77777777777)  / 2) /1697.77777777777);
-        // var ratioY = mouseY / 955;
-        
-        $('*').mouseenter(function(){
-            var currentCursor = $(this).css('cursor') ;
-            if (currentCursor != "default"){
-                isPressed = false;
-                dragStart = null;
+}
+
+function drawButtons(){
+    for(i = 0; i < selectedButtons.length; i++){
+        buttons[selectedButtons[i]].draw();
+    }
+}
+
+var draw = function () {
+    if(shouldDraw){
+        setTimeout(function() {
+            requestAnimationFrame(draw);
+            
+            // Clear canvas
+            var origin = context.transformedPoint(0, 0);
+            var dimension = context.transformedPoint(canvas.width, canvas.height);
+            context.clearRect(origin.x, origin.y, dimension.x - origin.x, dimension.y - origin.y);
+            
+            // Draw map
+            context.drawImage(mapImg, mapX, mapY, mapWidth, mapHeight);
+            if(showUpgrades){
+               context.drawImage(upgradesImg, mapX, mapY, mapWidth, mapHeight);  
             }
-        });
-    }, 1000 / 30);
+            if(showNames){
+                if(isLarge){
+                    context.drawImage(namesImg, mapX, mapY, mapWidth, mapHeight);  
+                }
+                else{
+                    context.drawImage(smallNamesImg, mapX, mapY, mapWidth, mapHeight); 
+                }
+            }
+            if(showTiers){
+                  context.drawImage(tiersImg, mapX, mapY, mapWidth, mapHeight);  
+            }
+            if(showUniques){
+               if(isLarge){
+                   context.drawImage(uniquesImg, mapX, mapY, mapWidth, mapHeight);  
+               }
+                else{
+                    context.drawImage(smallUniquesImg, mapX, mapY, mapWidth, mapHeight); 
+                }
+            }
+
+            // Set some variables
+            width = canvas.width * zoomValue;
+            height = canvas.height * zoomValue;
+            endX = width + originX;
+            endY = height + originY
+            
+            if(isKeyPressed){
+                checkButtons();
+            }
+
+            drawButtons();
+            // var ratioX =  ((mouseX-(1920 - 1697.77777777777)  / 2) /1697.77777777777);
+            // var ratioY = mouseY / 955;
+
+            if(!reset() && !isKeyPressed){
+                shouldDraw = false;
+            }
+        }, 1000 / 30);
+    }
 }
 
 class Button{
@@ -370,7 +424,6 @@ function createButtons(){
     buttons.push(new Button("Reef Map", 9, 0.2914921465968577, 0.8544502617801047));
     buttons.push(new Button("Orchard Map", 9, 0.7102748691099486, 0.8020471204188482));
     buttons.push(new Button("Temple Map", 9, 0.6496073298429326, 0.7235602094240837));
-    buttons.push(new Button("Atoll Map", 9, 0.7102748691099486, 0.5852931937172775));
     buttons.push(new Button("Acton's Nightmare Overgrown Shrine Map", 9, 0.37866492146596803, 0.2293193717277487));
     buttons.push(new Button("Hall of Grandmasters Promenade Map", 9, 0.48056282722513083, 0.2680628272251309));
     buttons.push(new Button("Putrid Cloister Museum Map", 9, 0.5429973821989531, 0.21675392670157068));
@@ -481,7 +534,6 @@ canvas.addEventListener('mousemove', function(evt){
     if (dragStart){
         var pt = context.transformedPoint(lastX, lastY);
         context.translate(pt.x - dragStart.x, pt.y - dragStart.y);
-        draw();
     }
 });
 
@@ -497,6 +549,8 @@ canvas.addEventListener('mousedown', function(evt){
 canvas.addEventListener('mouseup', function(evt){
     dragStart = null;
     isPressed = false;
+    shouldDraw = true;
+    reset();
 });
 
 addEvent(document, "mouseout", function(e) {
@@ -516,14 +570,35 @@ addEvent(document, "click", function(e){
             if (buttons[i].isPressed(mX, mY)){
                 if(buttons[i].completed){
                     buttons[i].completed = false;
+                    if(!buttons[i].selected){
+                        removeInstance(i, selectedButtons);
+                    }
                 }
                 else{
                     buttons[i].completed = true;
+                    addInstance(i, selectedButtons);
                 }
             }
         }
     }
+    draw();
 });
+
+addEvent(document, "keydown" || "keypressed", function(e){
+    checkButtons();
+    draw();
+    shouldDraw = true;
+    isKeyPressed = true;
+});
+
+
+addEvent(document, "keyup", function(e){
+    checkButtons();
+    draw();
+    shouldDraw = true;
+    isKeyPressed = false;
+});
+
 
 onmousemove = function(e){
     mouseX = e.clientX;
@@ -533,6 +608,7 @@ onmousemove = function(e){
     var hover = false;
     for (i = 0; i < buttons.length; i++){
         if (buttons[i].isPressed(mX, mY)){
+            shouldDraw = true;
             document.body.style.cursor = "pointer";
             hover = true;
         }
