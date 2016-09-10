@@ -141,7 +141,19 @@
                 margin-right: -50%;
                 transform: translate(-50%, -50%);
             }
-            </style>
+            
+            button{
+                position: absolute;
+                z-index: 2;
+                cursor:pointer;
+            }
+            button[id="save"]{
+                top: 97%;
+                left: 35%;
+                margin-right: -50%;
+                transform: translate(-50%, -50%);
+            }
+        </style>
     </head>
     
     <body bgcolor="#000000">
@@ -156,7 +168,9 @@
            ga('send', 'pageview');
 
         </script>
-        <canvas id='canvas'></canvas>
+        
+        <canvas id='canvas' z-index:0></canvas>
+        <canvas id='searchCanvas' z-index:1></canvas>
             
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
             
@@ -167,32 +181,34 @@
         <input type="text" autofocus id='search' name="search" placeholder="Search.." class="noSelect">
         
         <div>
-        <input type="checkbox" id="mapCheckbox" checked="checked"><br>
-        <p id="mapCheckboxText">Show map names</p>
+            <input type="checkbox" id="mapCheckbox" checked="checked"><br>
+            <p id="mapCheckboxText">Show map names</p>
         </div>
         
         <div>
-        <input type="checkbox" id="tierCheckbox" checked="checked"><br>
-        <p id="tierCheckboxText">Show map tiers</p>
+            <input type="checkbox" id="tierCheckbox" checked="checked"><br>
+            <p id="tierCheckboxText">Show map tiers</p>
         </div>
         
         <div>
-        <input type="checkbox" id="uniqueCheckbox"><br>
-        <p id="uniqueCheckboxText">Show unique maps</p>
+            <input type="checkbox" id="uniqueCheckbox"><br>
+            <p id="uniqueCheckboxText">Show unique maps</p>
         </div>
         
         <div>
-        <input type="checkbox" id="upgradesCheckbox"><br>
-        <p id="upgradesCheckboxText">Show upgrade path</p>
+            <input type="checkbox" id="upgradesCheckbox"><br>
+            <p id="upgradesCheckboxText">Show upgrade path</p>
         </div>
         
         <div>
-        <input type="checkbox" id="smallTextCheckbox" name="sizeSelector"><br>
-        <p id="smallTextCheckboxText">Small Text</p>
-        
-        <input type="checkbox" id="largeTextCheckbox" name="sizeSelector" checked="checked"><br>
-        <p id="largeTextCheckboxText">Large Text</p>
+            <input type="checkbox" id="smallTextCheckbox" name="sizeSelector"><br>
+            <p id="smallTextCheckboxText">Small Text</p>
+
+            <input type="checkbox" id="largeTextCheckbox" name="sizeSelector" checked="checked"><br>
+            <p id="largeTextCheckboxText">Large Text</p>
         </div>
+        
+        <button type="button" id="save" onclick="save()">Save</button>
 
         
     </body>

@@ -1,10 +1,16 @@
 var container = document.getElementById("container");
 var content = document.getElementById("content");
+var search = document.getElementById('search');
 var canvas = document.getElementById('canvas');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-var search = document.getElementById('search');
 var context = canvas.getContext("2d");
+var searchCanvas = document.getElementById('canvas');
+searchCanvas.width = window.innerWidth;
+searchCanvas.height = window.innerHeight;
+var searchContext = searchCanvas.getContext("2d");
+var maxSearchResults = 30;
+var scaleFactor = 1.1;
 var mapImg = new Image();
 var tiersImg = new Image();
 var namesImg = new Image();
@@ -12,6 +18,8 @@ var uniquesImg = new Image();
 var upgradesImg = new Image();
 var smallNamesImg = new Image();
 var smallUniquesImg = new Image();
+var selectedImg = new Image();
+var completedImg = new Image();
 var buttons = [];
 var showNames =  true;
 var showTiers = true;
@@ -19,6 +27,7 @@ var showUniques = false;
 var showUpgrades = false;
 var landscape = true;
 var isLarge = true;
+atlasTracker = localStorage;
 mapImg.src = 'Atlas.png';
 tiersImg.src = 'AtlasTier.png'
 namesImg.src = 'AtlasNames.png';
@@ -26,7 +35,8 @@ uniquesImg.src = 'AtlasUnique.png';
 upgradesImg.src = 'AtlasUpgrades.png';
 smallNamesImg.src = 'AtlasNamesSmall.png';
 smallUniquesImg.src = 'AtlasUniquesSmall.png';
-
+selectedImg.src = 'Selected.png';
+completedImg.src = 'Completed.png'
 // Screen variables
 var zoomValue = 1;
 var originX = 0;
@@ -52,6 +62,17 @@ var isPressed = false;
 document.documentElement.style.overflow = 'hidden';  // firefox, chrome
 document.body.scroll = "no"; // ie only
 onselectstart="return false;"
+
+var loadButtons = function(){
+    createButtons();
+    if (localStorage.getItem("buttons") != null){
+        var temp = (JSON.parse(localStorage.getItem("buttons")));
+        console.log(temp);
+        for (i = 0; i < temp.length; i++){
+            buttons[i].completed = temp[i].completed;
+        }
+    }
+}
 
 function trackTransforms(context){
     var svg = document.createElementNS("http://www.w3.org/2000/svg",'svg');
@@ -82,28 +103,159 @@ function trackTransforms(context){
 }
 
 function detectMobile() { 
- if( navigator.userAgent.match(/Android/i)
- || navigator.userAgent.match(/webOS/i)
- || navigator.userAgent.match(/iPhone/i)
- || navigator.userAgent.match(/iPad/i)
- || navigator.userAgent.match(/iPod/i)
- || navigator.userAgent.match(/BlackBerry/i)
- || navigator.userAgent.match(/Windows Phone/i)
- ){
-    return true;
-  }
- else {
-    return false;
-  }
+   if( navigator.userAgent.match(/Android/i)
+    || navigator.userAgent.match(/webOS/i)
+    || navigator.userAgent.match(/iPhone/i)
+    || navigator.userAgent.match(/iPad/i)
+    || navigator.userAgent.match(/iPod/i)
+    || navigator.userAgent.match(/BlackBerry/i)
+    || navigator.userAgent.match(/Windows Phone/i)
+    ){
+        return true;
+    } else {
+        return false;
+    }
 }
 
 $(window).resize(function() {
-    // Reset variables
+    // Refresh page when it changes size
     if (!detectMobile()){
         window.location.reload(false);
     }
 });
 
+function setCanvas(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    if ((canvas.width / canvas.height) > 16.0 / 9.0){
+        mapHeight = canvas.height;
+        mapWidth = canvas.height * 16.0 / 9.0;
+        mapX = (canvas.width - mapWidth) / 2;
+        mapY = 0;
+        landscape = true;
+    } else{
+        landscape = false;
+        mapHeight = canvas.width * 9.0 / 16.0;
+        mapWidth = canvas.width;
+        mapX = 0;
+        mapY = (canvas.height - mapHeight) / 2;;
+    }
+}
+
+function reset () {
+    var xLimit1 = (canvas.width - (canvas.width * zoomValue));
+    var yLimit1 = (canvas.height - (canvas.height * zoomValue));
+    var xLimit2 = - xLimit1 + canvas.width;
+    var yLimit2 = - yLimit1 + canvas.height;
+    if (originX < xLimit1){
+        context.translate((xLimit1 - originX) / 40.0, 0);
+    }
+    if (originY < yLimit1){
+        context.translate(0,  (yLimit1 - originY) / 40.0);
+    }
+    if (endX > xLimit2){
+       context.translate((xLimit2 - endX) / 40.0, 0);
+    }
+    if (endY > yLimit2){
+      context.translate(0,  (yLimit2 - endY) / 40.0);
+    }
+}
+
+var draw = function () {
+    setTimeout(function() {
+
+        requestAnimationFrame(draw);
+
+        // Handle Checkboxes
+        showNames = $("#mapCheckbox").is(':checked');
+        showTiers = $("#tierCheckbox").is(':checked');
+        showUniques = $("#uniqueCheckbox").is(':checked');
+        showUpgrades = $("#upgradesCheckbox").is(':checked');
+        isLarge = $("#largeTextCheckbox").is(':checked');
+        $('input[type="checkbox"]').on('change', function() {
+           $(this).siblings('input[type="checkbox"]').prop('checked', false);
+        });
+
+
+        // Clear canvas
+        var origin = context.transformedPoint(0, 0);
+        var dimension = context.transformedPoint(canvas.width, canvas.height);
+        context.clearRect(origin.x, origin.y, dimension.x - origin.x, dimension.y - origin.y);
+        if (!isPressed){
+            reset();
+        }
+
+        // Draw map
+
+        context.drawImage(mapImg, mapX, mapY, mapWidth, mapHeight);
+        if(showUpgrades){
+           context.drawImage(upgradesImg, mapX, mapY, mapWidth, mapHeight);  
+        }
+        if(showNames){
+            if(isLarge){
+                context.drawImage(namesImg, mapX, mapY, mapWidth, mapHeight);  
+            }
+            else{
+                context.drawImage(smallNamesImg, mapX, mapY, mapWidth, mapHeight); 
+            }
+        }
+        if(showTiers){
+              context.drawImage(tiersImg, mapX, mapY, mapWidth, mapHeight);  
+        }
+        if(showUniques){
+           if(isLarge){
+               context.drawImage(uniquesImg, mapX, mapY, mapWidth, mapHeight);  
+           }
+            else{
+                context.drawImage(smallUniquesImg, mapX, mapY, mapWidth, mapHeight); 
+            }
+        }
+
+        // Set some variables
+        width = canvas.width * zoomValue;
+        height = canvas.height * zoomValue;
+        endX = width + originX;
+        endY = height + originY
+
+        // Draw selected buttons
+        var countSelected = 0;
+//        searchContext.lineWidth = 3;
+//        searchContext.strokeStyle = 'red';
+//        searchContext.beginPath();
+        var searchLength = document.getElementById('search').value.length;
+        var searchValue = document.getElementById('search').value;
+        for (i = 0; i < buttons.length; i++){
+            if (countSelected < maxSearchResults && searchLength > 0 && 
+            (buttons[i].name.toUpperCase().includes(searchValue.toUpperCase()) || 
+            buttons[i].tier == searchValue)){
+                countSelected = countSelected + 1;
+                buttons[i].selected = true;
+            }
+            else{
+                buttons[i].selected = false;
+            }
+            buttons[i].draw();
+        }
+        if (countSelected >= maxSearchResults){
+            document.getElementById("systemText").innerHTML = "Showing first " + countSelected + " results found";
+        }
+        else{
+            document.getElementById("systemText").innerHTML = "";
+        }
+        //searchContext.stroke();
+        
+        // var ratioX =  ((mouseX-(1920 - 1697.77777777777)  / 2) /1697.77777777777);
+        // var ratioY = mouseY / 955;
+        
+        $('*').mouseenter(function(){
+            var currentCursor = $(this).css('cursor') ;
+            if (currentCursor != "default"){
+                isPressed = false;
+                dragStart = null;
+            }
+        });
+    }, 1000 / 30);
+}
 
 class Button{
     constructor(name, tier, x, y){
@@ -112,20 +264,27 @@ class Button{
         this.y = mapY + y * mapHeight;
         this.radius = canvas.width / 150;
         this.selected = false;
+        this.completed = false;
         this.tier = tier;
     }
     
     draw(){
-      if (this.selected){
-          context.beginPath();
-          context.ellipse(this.x - this.radius , this.y - this.radius, this.radius, this.radius, 0, 2 * Math.PI, 0);
-          context.stroke();
-      }
+        if (this.completed){
+            searchContext.drawImage(completedImg, this.x - this.radius * 2, this.y - this.radius * 2, this.radius * 2, this.radius * 2);
+        }
+        if (this.selected){
+//          searchContext.moveTo(this.x, this.y - this.radius);
+//          searchContext.ellipse((this.x - this.radius) , this.y - this.radius, this.radius, this.radius, 0, 2 * Math.PI, 0);
+            searchContext.drawImage(selectedImg, this.x - this.radius * 2, this.y - this.radius * 2, this.radius * 2, this.radius * 2); 
+        }
+    }
+    
+    isPressed(mX, mY){
+        return (Math.sqrt(Math.pow((mX - (this.x - this.radius * 0.75)), 2) + Math.pow((mY - (this.y - this.radius * 0.75)), 2)) < this.radius);
     }
 }
 
 function createButtons(){
-    buttons = [];
     // T1
     buttons.push(new Button("Crystal Ore Map", 1, 0.18193717277486768, 0.14764397905759163));
     buttons.push(new Button("Jungle Valley Map", 1, 0.23082460732984172, 0.774869109947644));
@@ -161,7 +320,6 @@ function createButtons(){
     // T5
     buttons.push(new Button("Dunes Map", 5, 0.7542722513089016, 0.2649743455497382));
     buttons.push(new Button("Peninsula Map", 5, 0.7346020942408388, 0.35602094240837695));
-    buttons.push(new Button("Phantasmagoria Map", 5, 0.1972513089005222, 0.5664921465968586));
     buttons.push(new Button("Spider Lair Map", 5, 0.8215968586387449, 0.48206282722513089));
     buttons.push(new Button("Tower Map", 5, 0.7880235602094254, 0.5926230366492147));
     buttons.push(new Button("Pit Map", 5, 0.2172774869109935, 0.16753926701570682));
@@ -286,208 +444,104 @@ function createButtons(){
     buttons.push(new Button("Vaal Temple Map", 16, 0.3611727748691093, 0.5329371727748691)); 
 }
 
+function save(){
+    localStorage.setItem("buttons", JSON.stringify(buttons));
+}
+
+// Mouse functions
+function addEvent(obj, evt, fn) {
+    if (obj.addEventListener) {
+        obj.addEventListener(evt, fn, false);
+    }
+    else if (obj.attachEvent) {
+        obj.attachEvent("on" + evt, fn);
+    }
+}
+
+var zoom = function(delta){
+   var pt = context.transformedPoint(lastX, lastY);
+    if (zoomValue * (Math.pow(scaleFactor, delta)) > 0.9 && zoomValue * (Math.pow(scaleFactor, delta)) < 3){
+       context.translate(pt.x, pt.y);
+       context.scale(Math.pow(scaleFactor, delta), Math.pow(scaleFactor, delta));
+       context.translate(-pt.x, -pt.y);
+       draw();
+    }
+}
+
+var handleScroll = function(evt){
+    var delta = evt.wheelDelta ? evt.wheelDelta / 40 : evt.detail ? -evt.detail : 0;
+    if (delta){ 
+        zoom(delta)
+        return evt.preventDefault() && false;
+    }
+};
+
+canvas.addEventListener('mousemove', function(evt){
+    lastX = evt.offsetX;
+    lastY = evt.offsetY;
+    if (dragStart){
+        var pt = context.transformedPoint(lastX, lastY);
+        context.translate(pt.x - dragStart.x, pt.y - dragStart.y);
+        draw();
+    }
+});
+
+canvas.addEventListener('mousedown', function(evt){
+    lastX = evt.offsetX;
+    lastY = evt.offsetY;
+    dragStart = context.transformedPoint(lastX, lastY);
+    isPressed = true;
+});
+
+canvas.addEventListener('mouseup', function(evt){
+    dragStart = null;
+    isPressed = false;
+});
+
+addEvent(document, "mouseout", function(e) {
+    e = e ? e : window.event;
+    var from = e.relatedTarget || e.toElement;
+    if (!from || from.nodeName == "HTML") {
+        dragStart = null;
+        isPressed = false;
+    }
+});
+
+addEvent(document, "click", function(e){
+    console.log(mouseX, mouseY);
+    if (!dragStart){
+        var mX = context.transformedPoint(mouseX, 0).x;
+        var mY = context.transformedPoint(0, mouseY).y;
+        for (i = 0; i < buttons.length; i++){
+            if (buttons[i].isPressed(mX, mY)){
+                console.log("a");
+                if(buttons[i].completed){
+                    buttons[i].completed = false;
+                }
+                else{
+                    buttons[i].completed = true;
+                }
+            }
+        }
+    }
+});
+
+onmousemove = function(e){
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+}
+
+canvas.addEventListener('DOMMouseScroll', handleScroll, false);
+canvas.addEventListener('mousewheel', handleScroll, false);
+
 
 window.onload = function () {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    if ((canvas.width / canvas.height) > 16.0 / 9.0){
-        mapHeight = canvas.height;
-        mapWidth = canvas.height * 16.0 / 9.0;
-        mapX = (canvas.width - mapWidth) / 2;
-        mapY = 0;
-        landscape = true;
-    } else{
-        landscape = false;
-        mapHeight = canvas.width * 9.0 / 16.0;
-        mapWidth = canvas.width;
-        mapX = 0;
-        mapY = (canvas.height - mapHeight) / 2;;
-    }
-    createButtons();
+    setCanvas();
+    
     trackTransforms(context);
+    loadButtons();
     
-    var draw = function () {
-        setTimeout(function() {
-            
-            requestAnimationFrame(draw);
-            
-            showNames = $("#mapCheckbox").is(':checked');
-            showTiers = $("#tierCheckbox").is(':checked');
-            showUniques = $("#uniqueCheckbox").is(':checked');
-            showUpgrades = $("#upgradesCheckbox").is(':checked');
-            isLarge = $("#largeTextCheckbox").is(':checked');
-            $('input[type="checkbox"]').on('change', function() {
-               $(this).siblings('input[type="checkbox"]').prop('checked', false);
-            });
-
-            
-            // Clear canvas
-            var origin = context.transformedPoint(0, 0);
-            var dimension = context.transformedPoint(canvas.width, canvas.height);
-            context.clearRect(origin.x, origin.y, dimension.x - origin.x, dimension.y - origin.y);
-            if (!isPressed){
-                reset();
-            }
-            
-            // Draw map
-            context.drawImage(mapImg, mapX, mapY, mapWidth, mapHeight);
-            if(showUpgrades){
-               context.drawImage(upgradesImg, mapX, mapY, mapWidth, mapHeight);  
-            }
-            if(showNames){
-                if(isLarge){
-                    context.drawImage(namesImg, mapX, mapY, mapWidth, mapHeight);  
-                }
-                else{
-                    context.drawImage(smallNamesImg, mapX, mapY, mapWidth, mapHeight); 
-                }
-            }
-            if(showTiers){
-                  context.drawImage(tiersImg, mapX, mapY, mapWidth, mapHeight);  
-            }
-            if(showUniques){
-               if(isLarge){
-                   context.drawImage(uniquesImg, mapX, mapY, mapWidth, mapHeight);  
-               }
-                else{
-                    context.drawImage(smallUniquesImg, mapX, mapY, mapWidth, mapHeight); 
-                }
-            }
-
-            
-            // Set some variables
-            width = canvas.width * zoomValue;
-            height = canvas.height * zoomValue;
-            endX = width + originX;
-            endY = height + originY
-            var countSelected = 0;
-            
-            context.lineWidth = 3;
-            context.strokeStyle = 'red';
-            for (i = 0; i < buttons.length; i++){
-                if (countSelected < 30 && document.getElementById('search').value.length > 0 && 
-                    (buttons[i].name.toUpperCase().includes(document.getElementById('search').value.toUpperCase()) || buttons[i].tier == document.getElementById('search').value)){
-                    countSelected = countSelected + 1;
-                    buttons[i].selected = true;
-                }
-                else{
-                    buttons[i].selected = false;
-                }
-                buttons[i].draw();
-            }
-
-            if (countSelected >= 30){
-                document.getElementById("systemText").innerHTML = "Showing first " + countSelected + " results found";
-            }
-            else{
-                document.getElementById("systemText").innerHTML = "";
-            }
-            if(mouseX < 0 || mouseX > canvas.width || mouseY < 0 || mouseY > canvas.height){
-                isPressed = false;
-                dragStart = null;
-            }
-//            var ratioX =  ((mouseX-(1920 - 1697.77777777777)  / 2) /1697.77777777777);
-//            var ratioY = mouseY / 955;
-        }, 1000 / 60);
-    }
-    
-    $('*').mouseenter(function(){
-        var currentCursor = $(this).css('cursor') ;
-
-        if (currentCursor != "default"){
-            isPressed = false;
-            dragStart = null;
-        }
-    });
-    
-    function reset () {
-
-        var xLimit1 = (canvas.width - (canvas.width * zoomValue));
-        var yLimit1 = (canvas.height - (canvas.height * zoomValue));
-        var xLimit2 = - xLimit1 + canvas.width;
-        var yLimit2 = - yLimit1 + canvas.height;
-        if (originX < xLimit1){
-            context.translate((xLimit1 - originX) / 40.0, 0);
-        }
-        if (originY < yLimit1){
-            context.translate(0,  (yLimit1 - originY) / 40.0);
-        }
-        if (endX > xLimit2){
-           context.translate((xLimit2 - endX) / 40.0, 0);
-        }
-        if (endY > yLimit2){
-          context.translate(0,  (yLimit2 - endY) / 40.0);
-        }
-    }
-        
     draw();
-    
-    function addEvent(obj, evt, fn) {
-        if (obj.addEventListener) {
-            obj.addEventListener(evt, fn, false);
-        }
-        else if (obj.attachEvent) {
-            obj.attachEvent("on" + evt, fn);
-        }
-    }
-    
-    canvas.addEventListener('mousedown', function(evt){
-        lastX = evt.offsetX;
-        lastY = evt.offsetY;
-        dragStart = context.transformedPoint(lastX, lastY);
-        isPressed = true;
-    });
-    
-    canvas.addEventListener('mousemove', function(evt){
-        lastX = evt.offsetX;
-		lastY = evt.offsetY;
-		if (dragStart){
-			var pt = context.transformedPoint(lastX, lastY);
-			context.translate(pt.x - dragStart.x, pt.y - dragStart.y);
-			draw();
-		}
-	});
-    
-	canvas.addEventListener('mouseup', function(evt){
-		dragStart = null;
-        isPressed = false;
-    });
-    
-    addEvent(document, "mouseout", function(e) {
-        e = e ? e : window.event;
-        var from = e.relatedTarget || e.toElement;
-        if (!from || from.nodeName == "HTML") {
-            dragStart = null;
-            isPressed = false;
-        }
-    });
-    
-    onmousemove = function(e){
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    }
-
-	var scaleFactor = 1.1;
-	var zoom = function(delta){
-	   var pt = context.transformedPoint(lastX, lastY);
-        if (zoomValue * (Math.pow(scaleFactor, delta)) > 0.9 && zoomValue * (Math.pow(scaleFactor, delta)) < 3){
-           context.translate(pt.x, pt.y);
-           context.scale(Math.pow(scaleFactor, delta), Math.pow(scaleFactor, delta));
-           context.translate(-pt.x, -pt.y);
-           draw();
-        }
-	}
-    
-    var handleScroll = function(evt){
-        var delta = evt.wheelDelta ? evt.wheelDelta / 40 : evt.detail ? -evt.detail : 0;
-        if (delta) zoom(delta);
-			return evt.preventDefault() && false;
-		};
-    
-    canvas.addEventListener('DOMMouseScroll', handleScroll, false);
-    canvas.addEventListener('mousewheel', handleScroll, false);
-    
-
 };
     
 
