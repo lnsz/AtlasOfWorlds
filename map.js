@@ -508,13 +508,11 @@ addEvent(document, "mouseout", function(e) {
 });
 
 addEvent(document, "click", function(e){
-    console.log(mouseX, mouseY);
     if (!dragStart){
         var mX = context.transformedPoint(mouseX, 0).x;
         var mY = context.transformedPoint(0, mouseY).y;
         for (i = 0; i < buttons.length; i++){
             if (buttons[i].isPressed(mX, mY)){
-                console.log("a");
                 if(buttons[i].completed){
                     buttons[i].completed = false;
                 }
@@ -528,7 +526,7 @@ addEvent(document, "click", function(e){
 
 onmousemove = function(e){
     mouseX = e.clientX;
-    mouseY = e.clientY;
+    mouseY = e.clientY;    
 }
 
 canvas.addEventListener('DOMMouseScroll', handleScroll, false);
