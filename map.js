@@ -488,8 +488,10 @@ canvas.addEventListener('mousemove', function(evt){
 canvas.addEventListener('mousedown', function(evt){
     lastX = evt.offsetX;
     lastY = evt.offsetY;
-    dragStart = context.transformedPoint(lastX, lastY);
     isPressed = true;
+    if ($(this).css('cursor') == "default"){
+        dragStart = context.transformedPoint(lastX, lastY);
+    }
 });
 
 canvas.addEventListener('mouseup', function(evt){
@@ -525,7 +527,19 @@ addEvent(document, "click", function(e){
 
 onmousemove = function(e){
     mouseX = e.clientX;
-    mouseY = e.clientY;    
+    mouseY = e.clientY;
+    var mX = context.transformedPoint(mouseX, 0).x;
+    var mY = context.transformedPoint(0, mouseY).y;
+    var hover = false;
+    for (i = 0; i < buttons.length; i++){
+        if (buttons[i].isPressed(mX, mY)){
+            document.body.style.cursor = "pointer";
+            hover = true;
+        }
+    }
+    if (!hover){
+        document.body.style.cursor = "default";
+    }
 }
 
 canvas.addEventListener('DOMMouseScroll', handleScroll, false);
