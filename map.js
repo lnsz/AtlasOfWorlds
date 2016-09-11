@@ -140,7 +140,6 @@ $(document).on("click" || "change", "input[type='checkbox']", function () {
     showTiers = $("#tierCheckbox").is(':checked');
     showUniques = $("#uniqueCheckbox").is(':checked');
     showUpgrades = $("#upgradesCheckbox").is(':checked');
-    $(this).siblings('input[type="checkbox"]').prop('checked', false);
     isLarge = $("#largeTextCheckbox").is(':checked');
     shouldDraw = true;
 });
