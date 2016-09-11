@@ -58,22 +58,7 @@ button{
     z-index: 2;
     cursor:pointer;
 }
-button[id="save"]{
-    top: 2.5%;
-    left: 50%;
-    margin-right: -50%;
-    color: #A9A9A9;
-    background-color: black;
-    font-size: 2vh;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
-    border-radius: 1.5vh;
-    border-style:solid;
-    border-color: #A9A9A9;
-    width: 4vw;
-    height: 3vh;
-    transform: translate(-50%, -50%);
-    outline: none;
-}
+
 button[id="save"]:hover{
     background-color:#A9A9A9;
     color: black;
@@ -259,6 +244,22 @@ input:checked + .slider:before {
         transform: translate(-50%, -50%);
     }
 
+    button[id="save"]{
+        top: 2.5%;
+        left: 50%;
+        margin-right: -50%;
+        color: #A9A9A9;
+        background-color: black;
+        font-size: 2vh;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        border-radius: 1.5vh;
+        border-style:solid;
+        border-color: #A9A9A9;
+        width: 10vh;
+        height: 3vh;
+        transform: translate(-50%, -50%);
+        outline: none;
+    }
 
 }
 
@@ -372,6 +373,23 @@ input:checked + .slider:before {
         border-radius: 0 0 1.5vw 1.5vw;
         color: #A9A9A9;
         width: 14vw;
+    }
+    
+    button[id="save"]{
+        top: 2.5%;
+        left: 50%;
+        margin-right: -50%;
+        color: #A9A9A9;
+        background-color: black;
+        font-size: 2vh;
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+        border-radius: 1.5vh;
+        border-style:solid;
+        border-color: #A9A9A9;
+        width: 6vw;
+        height: 3vh;
+        transform: translate(-50%, -50%);
+        outline: none;
     }
 }
 
