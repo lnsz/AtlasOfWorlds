@@ -2,8 +2,10 @@
 <html>
 
     <head>
-        <title>Atlas of Worlds</title>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
         
+        <title>Atlas of Worlds</title>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     
@@ -30,36 +32,49 @@
         <p id="systemText"></p>
             
         <input type="text" autofocus id='search' name="search" placeholder="Search.." class="noSelect">
-        
-        <div>
-            <input type="checkbox" id="mapCheckbox" checked="checked"><br>
-            <p id="mapCheckboxText">Show map names</p>
-        </div>
-        
-        <div>
-            <input type="checkbox" id="tierCheckbox" checked="checked"><br>
-            <p id="tierCheckboxText">Show map tiers</p>
-        </div>
-        
-        <div>
-            <input type="checkbox" id="uniqueCheckbox"><br>
-            <p id="uniqueCheckboxText">Show unique maps</p>
-        </div>
-        
-        <div>
-            <input type="checkbox" id="upgradesCheckbox"><br>
-            <p id="upgradesCheckboxText">Show upgrade path</p>
-        </div>
-        
-        <div>
-            <input type="checkbox" id="smallTextCheckbox" name="sizeSelector"><br>
-            <p id="smallTextCheckboxText">Small Text</p>
 
-            <input type="checkbox" id="largeTextCheckbox" name="sizeSelector" checked="checked"><br>
-            <p id="largeTextCheckboxText">Large Text</p>
+        
+        <div class="dropdown">
+          <div class="background"></div>
+          <button class="dropbtn">Settings</button>
+          <div class="dropdown-content">
+            <label class="btn" for="mapCheckbox">Show map names
+                <label class="switch" id="mapCheckboxSlider">
+                    <input type="checkbox" id="mapCheckbox" checked="checked">
+                    <div class="slider round"></div>
+                </label>
+            </label>
+              
+            <label class="btn" for="tierCheckbox">Show map tiers
+                <label class="switch" id="tierCheckboxSlider">
+                    <input type="checkbox" id="tierCheckbox" checked="checked">
+                    <div class="slider round"></div>
+                </label>
+            </label>
+              
+            <label class="btn" for="uniqueCheckbox">Show unique maps
+                <label class="switch" id="uniqueCheckboxSlider">
+                    <input type="checkbox" id="uniqueCheckbox">
+                    <div class="slider round"></div>
+                </label>
+            </label>
+              
+            <label class="btn" for="upgradesCheckbox">Show upgrade path
+                <label class="switch" id="upgradesCheckboxSlider">
+                    <input type="checkbox" id="upgradesCheckbox">
+                    <div class="slider round"></div>
+                </label>
+            </label>
+              
+            <label class="btn" for="largeTextCheckbox">Large font size
+                <label class="switch" id="largeTextCheckboxSlider">
+                    <input type="checkbox" id="largeTextCheckbox" checked="checked">
+                    <div class="slider round"></div>
+                </label>
+            </label>
+          </div>
         </div>
         
-
         <button type="button" id="save" onclick="save()">Save</button>
 
         
