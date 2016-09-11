@@ -90,6 +90,7 @@ function trackTransforms(context){
         xform = xform.scaleNonUniform(sx, sy);
         zoomValue = zoomValue * sx;
         shouldDraw = true;
+        draw();
         return scale.call(context, sx, sy);
     };
 
@@ -99,6 +100,7 @@ function trackTransforms(context){
         originX = xform.e;
         originY = xform.f;
         shouldDraw = true;
+        draw();
         return translate.call(context, dx, dy);
     };
 
@@ -143,12 +145,17 @@ $(document).on("click" || "change", "input[type='checkbox']", function () {
     shouldDraw = true;
 });
 
-$('*').mouseenter(function(){
+$('*').mouseenter(function(){;
     var currentCursor = $(this).css('cursor') ;
     if (currentCursor != "default"){
         isPressed = false;
         dragStart = null;
     }
+});
+
+$('*').mouseleave(function(){
+    isPressed = false;
+    dragStart = null;
 });
 
 function setCanvas(){
@@ -258,7 +265,6 @@ var draw = function () {
     if(shouldDraw){
         setTimeout(function() {
             requestAnimationFrame(draw);
-            
             // Clear canvas
             var origin = context.transformedPoint(0, 0);
             var dimension = context.transformedPoint(canvas.width, canvas.height);
@@ -529,6 +535,21 @@ var handleScroll = function(evt){
 };
 
 canvas.addEventListener('mousemove', function(evt){
+    mouseX = evt.clientX;
+    mouseY = evt.clientY;
+    var mX = context.transformedPoint(mouseX, 0).x;
+    var mY = context.transformedPoint(0, mouseY).y;
+    var hover = false;
+    for (i = 0; i < buttons.length; i++){
+        if (buttons[i].isPressed(mX, mY)){
+            shouldDraw = true;
+            document.body.style.cursor = "pointer";
+            hover = true;
+        }
+    }
+    if (!hover){
+        document.body.style.cursor = "default";
+    }
     lastX = evt.offsetX;
     lastY = evt.offsetY;
     if (dragStart){
@@ -599,28 +620,8 @@ addEvent(document, "keyup", function(e){
     isKeyPressed = false;
 });
 
-
-onmousemove = function(e){
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    var mX = context.transformedPoint(mouseX, 0).x;
-    var mY = context.transformedPoint(0, mouseY).y;
-    var hover = false;
-    for (i = 0; i < buttons.length; i++){
-        if (buttons[i].isPressed(mX, mY)){
-            shouldDraw = true;
-            document.body.style.cursor = "pointer";
-            hover = true;
-        }
-    }
-    if (!hover){
-        document.body.style.cursor = "default";
-    }
-}
-
 canvas.addEventListener('DOMMouseScroll', handleScroll, false);
 canvas.addEventListener('mousewheel', handleScroll, false);
-
 
 window.onload = function () {
     setCanvas();
