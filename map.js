@@ -31,7 +31,7 @@ var isLarge = true;
 var shouldDraw = true;
 atlasTracker = localStorage;
 
-mapImg.src = 'Atlas.png';
+mapImg.src = 'Atlas.jpg';
 tiersImg.src = 'AtlasTier.png'
 namesImg.src = 'AtlasNames.png';
 uniquesImg.src = 'AtlasUnique.png';
