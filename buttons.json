@@ -469,7 +469,7 @@
    },
    {  
       "name":"Cemetery Map",
-      "x":0.5930628272251313,
+      "x":0.6394162303664928,
       "y":0.225130890052356,
       "radius":1,
       "selected":false,
@@ -758,7 +758,7 @@
    {  
       "name":"Wasteland Map",
       "x":0.5595005235602097,
-      "y":0.35087958115183243,
+      "y":0.3581151832460733,
       "radius":1,
       "selected":false,
       "completed":false,
@@ -1114,5 +1114,14 @@
       "selected":false,
       "completed":false,
       "tier":16
-   }
+   },
+   {  
+      "name":"The Shaper's Realm",
+      "x":0.524149214659686,
+      "y":0.5109476439790576,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":17
+   }   
 ]

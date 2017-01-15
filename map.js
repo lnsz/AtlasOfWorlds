@@ -31,13 +31,13 @@ var isLarge = true;
 var shouldDraw = true;
 atlasTracker = localStorage;
 
-mapImg.src = 'Atlas.jpg';
-tiersImg.src = 'AtlasTier.png'
-namesImg.src = 'AtlasNames.png';
-uniquesImg.src = 'AtlasUnique.png';
-upgradesImg.src = 'AtlasUpgrades.png';
-smallNamesImg.src = 'AtlasNamesSmall.png';
-smallUniquesImg.src = 'AtlasUniquesSmall.png';
+mapImg.src = 'Atlas25.jpg';
+tiersImg.src = 'AtlasTier25.png'
+namesImg.src = 'AtlasNames25.png';
+uniquesImg.src = 'AtlasUnique25.png';
+upgradesImg.src = 'AtlasUpgrades25.png';
+smallNamesImg.src = 'AtlasNamesSmall25.png';
+smallUniquesImg.src = 'AtlasUniquesSmall25.png';
 selectedImg.src = 'Selected.png';
 completedImg.src = 'Completed.png'
 // Screen variables
@@ -231,7 +231,8 @@ function checkButtons(){
         var searchValue = document.getElementById('search').value;
         var searchLength = searchValue.length;
         var index = 0;
-        for (i = 0; i < buttons.length; i++){
+        for (i = 0; i < buttons.length; i++){	
+			
             if (countSelected < maxSearchResults && searchLength > 0 && 
             (buttons[i].name.toUpperCase().includes(searchValue.toUpperCase()) || 
             buttons[i].tier == searchValue)){
@@ -312,7 +313,17 @@ var draw = function () {
                 shouldDraw = false;
             }
         }, 1000 / 30);
-    }
+		
+			var atlasBonus = 0;
+		
+		for (i = 0; i < buttons.length; i++){
+			if(buttons[i].completed == true){
+				atlasBonus = atlasBonus + 1;
+			}		
+		}	
+		
+		document.getElementById("systemText").innerHTML = "Atlas Bonus: " + atlasBonus + "/" + buttons.length;
+   }
 }
 
 class Button{
@@ -411,8 +422,8 @@ function createButtons(){
     // T8
     buttons.push(new Button("Arachnid Nest Map", 8, 0.3896780104712037, 0.1799633507853403));
     buttons.push(new Button("Bog Map", 8, 0.592295811518325, 0.15178534031413612));
-    buttons.push(new Button("Cemetery Map", 8, 0.5930628272251313, 0.225130890052356));
-    buttons.push(new Button("Barrows Map", 8, 0.4899869109947644, 0.22198952879581152));
+    buttons.push(new Button("Cemetery Map", 8, 0.6246962303664928, 0.222830890052356));
+    buttons.push(new Button("Barrows Map", 8, 0.43579842931937146, 0.16753926701570682));
     buttons.push(new Button("Shore Map", 8, 0.32288743455497304, 0.6366020942408377));
     buttons.push(new Button("Tropical Island Map", 8, 0.2914921465968577, 0.7276544502617801));
     buttons.push(new Button("Arena Map", 8, 0.7085078534031423, 0.7381256544502618));
@@ -423,14 +434,14 @@ function createButtons(){
     // T9
     buttons.push(new Button("Crypt Map", 9, 0.5482984293193719, 0.24193193717277486));
     buttons.push(new Button("Museum Map", 9, 0.5275052356020944, 0.2271780104712042));
-    buttons.push(new Button("Promenade Map", 9, 0.4611256544502616, 0.26068586387434556));
+    buttons.push(new Button("Promenade Map", 9, 0.480000076963350007696335, 0.26598586387434556));
     buttons.push(new Button("Overgrown Shrine Map", 9, 0.39397905759162255, 0.24079057591623038));
     buttons.push(new Button("Coves Map", 9, 0.33390052356020866, 0.7287015706806282));
     buttons.push(new Button("Reef Map", 9, 0.2914921465968577, 0.8544502617801047));
     buttons.push(new Button("Orchard Map", 9, 0.7102748691099486, 0.8020471204188482));
     buttons.push(new Button("Temple Map", 9, 0.6496073298429326, 0.7235602094240837));
     buttons.push(new Button("Acton's Nightmare Overgrown Shrine Map", 9, 0.37866492146596803, 0.2293193717277487));
-    buttons.push(new Button("Hall of Grandmasters Promenade Map", 9, 0.48056282722513083, 0.2680628272251309));
+    buttons.push(new Button("Hall of Grandmasters Promenade Map", 9, 0.42678429319371694, 0.2271780104712042));
     buttons.push(new Button("Putrid Cloister Museum Map", 9, 0.5429973821989531, 0.21675392670157068));
     buttons.push(new Button("Coward's Trial Crypt Map", 9, 0.566557591623037, 0.24607329842931938));
     buttons.push(new Button("Mao Kun Reef Map", 9, 0.3144633507853395, 0.8408376963350785));
@@ -441,15 +452,16 @@ function createButtons(){
     buttons.push(new Button("Malformation Map", 10, 0.6384162303664928, 0.8303664921465969));
     buttons.push(new Button("Courtyard Map", 10, 0.5318062827225132, 0.31204188481675393));
     buttons.push(new Button("Colonade Map", 10, 0.4387434554973819, 0.2973350785340314));
-    buttons.push(new Button("Arsenal Map", 10, 0.5734476439790579, 0.29728795811518327));
+    buttons.push(new Button("Arsenal Map", 10, 0.6000078534031418, 0.3035999785340314));
     buttons.push(new Button("Terrace Map", 10, 0.3168193717277479, 0.2869109947643979));
     buttons.push(new Button("The Vinktar Square Courtyard Map", 10, 0.524149214659686, 0.2743455497382199));
     buttons.push(new Button("Poorjoy's Asylum Temple Map", 10, 0.6372382198952886, 0.7068062827225131));
+	buttons.push(new Button("Caer Blaidd, Wolfpack's Den Underground River Map", 10, 0.406704188481675, 0.8365078534031414));
     
     // T11
     buttons.push(new Button("Bazaar Map", 11, 0.3456806282722506, 0.3581151832460733));
     buttons.push(new Button("Chateau Map", 11, 0.6394162303664928, 0.29628795811518327));
-    buttons.push(new Button("Wasteland Map", 11, 0.5595005235602097, 0.35087958115183243));
+    buttons.push(new Button("Wasteland Map", 11, 0.5665005235602097, 0.37587958115183243));
     buttons.push(new Button("Excavation Map", 11, 0.5954188481675396, 0.7801047120418848));
     buttons.push(new Button("Underground Sea Map", 11, 0.481740837696335, 0.8052356020942408));
     buttons.push(new Button("Torture Chamber Map", 11, 0.42384031413612533, 0.766586387434555));
@@ -499,6 +511,8 @@ function createButtons(){
     buttons.push(new Button("Forge of the Phoenix Map", 16, 0.5545994764397908, 0.4198952879581152));
     buttons.push(new Button("Lair of the Hydra Map", 16, 0.4587696335078532, 0.4157068062827225));
     buttons.push(new Button("Vaal Temple Map", 16, 0.3611727748691093, 0.5329371727748691)); 
+	// T17
+    buttons.push(new Button("The Shaper's Realm", 17, 0.507509214659686, 0.4999476439790576));
 }
 
 function save(){
