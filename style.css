@@ -30,14 +30,14 @@ input[type=text] {
     color: #A9A9A9;
     border-color: #A9A9A9;
     border-style: solid;
-}   
+}
 
 input:focus {
     outline: none;
 }
 p{
     font-size: 2vh;
-    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; 
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     color: white;
     position: absolute;
     z-index: 2;
@@ -146,7 +146,7 @@ input:checked + .slider:before {
         content: "";
         position: absolute;
         z-index: 3;
-        background-image: url(Settings.png);
+        background-image: url("./Images/Settings.png");
         background-size: contain;
         background-repeat: no-repeat;
         left: 1%;
@@ -162,18 +162,18 @@ input:checked + .slider:before {
 
     .dropdown:hover .background{
        -webkit-transform: rotate(90deg);
-       transition-duration: .5s;  
+       transition-duration: .5s;
     }
 
     .dropdown:not(:hover) .background{
        -webkit-transform: rotate(-90deg);
-       transition-duration: .5s;  
+       transition-duration: .5s;
     }
 
 
     .dropdown {
         display: inline-block;
-        position: absolute;    
+        position: absolute;
 
         z-index:2;
         left: 1%;
@@ -201,7 +201,7 @@ input:checked + .slider:before {
            -moz-transition: all .25s ease;
                 transition: all .25s ease;
     }
-    
+
     .dropdown-content .btn {
         cursor: pointer;
         color: #A9A9A9;
@@ -212,7 +212,7 @@ input:checked + .slider:before {
         border-color: #A9A9A9;
         border-style: solid;
         font-size: 1.4vh;
-        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; 
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
         text-decoration: none;
         display: block;
     }
@@ -284,7 +284,7 @@ input:checked + .slider:before {
         content: "";
         position: absolute;
         z-index: 3;
-        background-image: url(Settings.png);
+        background-image: url("./Images/Settings.png");
         background-size: contain;
         background-repeat: no-repeat;
         left: 1%;
@@ -300,18 +300,18 @@ input:checked + .slider:before {
 
     .dropdown:hover .background{
        -webkit-transform: rotate(90deg);
-       transition-duration: .5s;  
+       transition-duration: .5s;
     }
 
     .dropdown:not(:hover) .background{
        -webkit-transform: rotate(-90deg);
-       transition-duration: .5s;  
+       transition-duration: .5s;
     }
 
 
     .dropdown {
         display: inline-block;
-        position: absolute;    
+        position: absolute;
 
         z-index:2;
         left: 1%;
@@ -350,7 +350,7 @@ input:checked + .slider:before {
         border-color: #A9A9A9;
         border-style: solid;
         font-size: 1.8vh;
-        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; 
+        font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
         text-decoration: none;
         display: block;
     }
@@ -374,7 +374,7 @@ input:checked + .slider:before {
         color: #A9A9A9;
         width: 14vw;
     }
-    
+
     button[id="save"]{
         top: 2.5%;
         left: 50%;
