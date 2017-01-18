@@ -1,0 +1,1127 @@
+[  
+   {  
+      "name":"Crystal Ore Map",
+      "x":0.18193717277486768,
+      "y":0.14764397905759163,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":1
+   },
+   {  
+      "name":"Jungle Valley Map",
+      "x":0.23082460732984172,
+      "y":0.774869109947644,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":1
+   },
+   {  
+      "name":"Desert Map",
+      "x":0.8127617801047134,
+      "y":0.15387958115183245,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":1
+   },
+   {  
+      "name":"Arcade Map",
+      "x":0.8316099476439806,
+      "y":0.768586387434555,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":1
+   },
+   {  
+      "name":"Factory Map",
+      "x":0.177814136125653,
+      "y":0.2418848167539267,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":2
+   },
+   {  
+      "name":"Beach Map",
+      "x":0.2520287958115172,
+      "y":0.7267015706806282,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":2
+   },
+   {  
+      "name":"Ghetto Map",
+      "x":0.7921465968586401,
+      "y":0.7424083769633508,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":2
+   },
+   {  
+      "name":"Oasis Map",
+      "x":0.8080497382198967,
+      "y":0.20837696335078534,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":2
+   },
+   {  
+      "name":"Channel Map",
+      "x":0.20785340314135994,
+      "y":0.30261780104712044,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":3
+   },
+   {  
+      "name":"Cavern Map",
+      "x":0.18134816753926558,
+      "y":0.42094240837696334,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":3
+   },
+   {  
+      "name":"Marshes Map",
+      "x":0.19018324607329704,
+      "y":0.650261780104712,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":3
+   },
+   {  
+      "name":"Vaal Pyramid Map",
+      "x":0.23023560209423963,
+      "y":0.6230366492146597,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":3
+   },
+   {  
+      "name":"Arid Lake Map",
+      "x":0.8021596858638758,
+      "y":0.2534031413612565,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":3
+   },
+   {  
+      "name":"Sewers Map",
+      "x":0.7785994764397919,
+      "y":0.8,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":3
+   },
+   {  
+      "name":"Grotto Map",
+      "x":0.8227748691099491,
+      "y":0.3518324607329843,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":3
+   },
+   {  
+      "name":"Vaults of Atziri Vaal Pyramid Map",
+      "x":0.24790575916230254,
+      "y":0.6052356020942409,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":3
+   },
+   {  
+      "name":"Acid Lakes Map",
+      "x":0.20667539267015575,
+      "y":0.21780104712041884,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":4
+   },
+   {  
+      "name":"Waste Pool Map",
+      "x":0.2184554973821977,
+      "y":0.3968586387434555,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":4
+   },
+   {  
+      "name":"Phantasmagoria Map",
+      "x":0.1972513089005222,
+      "y":0.5664921465968586,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":4
+   },
+   {  
+      "name":"Graveyard Map",
+      "x":0.7338350785340325,
+      "y":0.7476439790575916,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":4
+   },
+   {  
+      "name":"Dungeon Map",
+      "x":0.8151178010471218,
+      "y":0.3078534031413613,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":4
+   },
+   {  
+      "name":"Villa Map",
+      "x":0.7717044240837709,
+      "y":0.3486910994764398,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":4
+   },
+   {  
+      "name":"Hallowed Ground Cemetery Map",
+      "x":0.7273560209424094,
+      "y":0.7905759162303665,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":4
+   },
+   {  
+      "name":"Academy Map",
+      "x":0.8304319371727764,
+      "y":0.6984293193717277,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":4
+   },
+   {  
+      "name":"Dunes Map",
+      "x":0.7542722513089016,
+      "y":0.2649743455497382,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":5
+   },
+   {  
+      "name":"Peninsula Map",
+      "x":0.7346020942408388,
+      "y":0.35602094240837695,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":5
+   },
+   {  
+      "name":"Spider Lair Map",
+      "x":0.8215968586387449,
+      "y":0.4820628272251309,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":5
+   },
+   {  
+      "name":"Tower Map",
+      "x":0.7880235602094254,
+      "y":0.5926230366492147,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":5
+   },
+   {  
+      "name":"Pit Map",
+      "x":0.2172774869109935,
+      "y":0.16753926701570682,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":5
+   },
+   {  
+      "name":"Mesa Map",
+      "x":0.2543848167539256,
+      "y":0.2784397905759162,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":5
+   },
+   {  
+      "name":"Primordial Pool Map",
+      "x":0.2147434554973809,
+      "y":0.4858167539267016,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":5
+   },
+   {  
+      "name":"Burial Chamber Map",
+      "x":0.2518287958115172,
+      "y":0.5420141361256545,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":5
+   },
+   {  
+      "name":"Racecourse Map",
+      "x":0.2559738219895277,
+      "y":0.13179581151832462,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Quarry Map",
+      "x":0.28365706806282626,
+      "y":0.21675392670157068,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Canyon Map",
+      "x":0.2610638743455486,
+      "y":0.4326607329842932,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Vaal City Map",
+      "x":0.28836910994764303,
+      "y":0.5999528795811518,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Strand Map",
+      "x":0.7114528795811528,
+      "y":0.2627801047120419,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Wharf Map",
+      "x":0.6837696335078542,
+      "y":0.3162303664921466,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Ramparts Map",
+      "x":0.7202879581151842,
+      "y":0.44397905759162304,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Spider Forest Map",
+      "x":0.7952696335078547,
+      "y":0.4941937172774869,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Thicket Map",
+      "x":0.8151178010471218,
+      "y":0.4292251308900524,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Whakawairua Tuhau Strand Map",
+      "x":0.7114528795811528,
+      "y":0.29842931937172773,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":6
+   },
+   {  
+      "name":"Armory Map",
+      "x":0.7314790575916241,
+      "y":0.6732984293193718,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":7
+   },
+   {  
+      "name":"Mud Geyser Map",
+      "x":0.7591623036649227,
+      "y":0.49842931937172774,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":7
+   },
+   {  
+      "name":"Castle Ruins Map",
+      "x":0.6778795811518332,
+      "y":0.19467015706806282,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":7
+   },
+   {  
+      "name":"Cells Map",
+      "x":0.30150523560209336,
+      "y":0.13712565445026179,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":7
+   },
+   {  
+      "name":"Catacombs Map",
+      "x":0.3274214659685856,
+      "y":0.5612094240837696,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":7
+   },
+   {  
+      "name":"Arachnid Tomb Map",
+      "x":0.2720549738219885,
+      "y":0.6586387434554973,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":7
+   },
+   {  
+      "name":"Ashen Wood Map",
+      "x":0.35922774869109886,
+      "y":0.17801047120418848,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":7
+   },
+   {  
+      "name":"Olmec's Sanctum Catacombs Map",
+      "x":0.3409685863874338,
+      "y":0.581151832460733,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":7
+   },
+   {  
+      "name":"Arachnid Nest Map",
+      "x":0.3896780104712037,
+      "y":0.1799633507853403,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Bog Map",
+      "x":0.592295811518325,
+      "y":0.15178534031413612,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Cemetery Map",
+      "x":0.6394162303664928,
+      "y":0.225130890052356,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Barrows Map",
+      "x":0.4899869109947644,
+      "y":0.22198952879581152,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Shore Map",
+      "x":0.32288743455497304,
+      "y":0.6366020942408377,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Tropical Island Map",
+      "x":0.2914921465968577,
+      "y":0.7276544502617801,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Arena Map",
+      "x":0.7085078534031423,
+      "y":0.7381256544502618,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Pier Map",
+      "x":0.7444371727748702,
+      "y":0.5862931937172775,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Atoll Map",
+      "x":0.7102748691099486,
+      "y":0.5852931937172775,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Maelstrom of Chaos Atoll Map",
+      "x":0.6926047120418857,
+      "y":0.5895287958115183,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":8
+   },
+   {  
+      "name":"Crypt Map",
+      "x":0.5482984293193719,
+      "y":0.24193193717277486,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Museum Map",
+      "x":0.5275052356020944,
+      "y":0.2271780104712042,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Promenade Map",
+      "x":0.4611256544502616,
+      "y":0.26068586387434556,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Overgrown Shrine Map",
+      "x":0.39397905759162255,
+      "y":0.24079057591623038,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Coves Map",
+      "x":0.33390052356020866,
+      "y":0.7287015706806282,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Reef Map",
+      "x":0.2914921465968577,
+      "y":0.8544502617801047,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Orchard Map",
+      "x":0.7102748691099486,
+      "y":0.8020471204188482,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Temple Map",
+      "x":0.6496073298429326,
+      "y":0.7235602094240837,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Acton's Nightmare Overgrown Shrine Map",
+      "x":0.37866492146596803,
+      "y":0.2293193717277487,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Hall of Grandmasters Promenade Map",
+      "x":0.48056282722513083,
+      "y":0.2680628272251309,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Putrid Cloister Museum Map",
+      "x":0.5429973821989531,
+      "y":0.21675392670157068,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Coward's Trial Crypt Map",
+      "x":0.566557591623037,
+      "y":0.24607329842931938,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Mao Kun Reef Map",
+      "x":0.3144633507853395,
+      "y":0.8408376963350785,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":9
+   },
+   {  
+      "name":"Quay Map",
+      "x":0.37277486910994706,
+      "y":0.8335078534031414,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":10
+   },
+   {  
+      "name":"Underground River Map",
+      "x":0.40281413612565403,
+      "y":0.8649214659685864,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":10
+   },
+   {  
+      "name":"Malformation Map",
+      "x":0.6384162303664928,
+      "y":0.8303664921465969,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":10
+   },
+   {  
+      "name":"Courtyard Map",
+      "x":0.5318062827225132,
+      "y":0.31204188481675393,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":10
+   },
+   {  
+      "name":"Colonade Map",
+      "x":0.4387434554973819,
+      "y":0.2973350785340314,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":10
+   },
+   {  
+      "name":"Arsenal Map",
+      "x":0.5734476439790579,
+      "y":0.29728795811518327,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":10
+   },
+   {  
+      "name":"Terrace Map",
+      "x":0.3168193717277479,
+      "y":0.2869109947643979,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":10
+   },
+   {  
+      "name":"The Vinktar Square Courtyard Map",
+      "x":0.524149214659686,
+      "y":0.2743455497382199,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":10
+   },
+   {  
+      "name":"Poorjoy's Asylum Temple Map",
+      "x":0.6372382198952886,
+      "y":0.7068062827225131,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":10
+   },
+   {  
+      "name":"Bazaar Map",
+      "x":0.3456806282722506,
+      "y":0.3581151832460733,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":11
+   },
+   {  
+      "name":"Chateau Map",
+      "x":0.6394162303664928,
+      "y":0.29628795811518327,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":11
+   },
+   {  
+      "name":"Wasteland Map",
+      "x":0.5595005235602097,
+      "y":0.3581151832460733,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":11
+   },
+   {  
+      "name":"Excavation Map",
+      "x":0.5954188481675396,
+      "y":0.7801047120418848,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":11
+   },
+   {  
+      "name":"Underground Sea Map",
+      "x":0.481740837696335,
+      "y":0.8052356020942408,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":11
+   },
+   {  
+      "name":"Torture Chamber Map",
+      "x":0.42384031413612533,
+      "y":0.766586387434555,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":11
+   },
+   {  
+      "name":"Precinct Map",
+      "x":0.3737198952879576,
+      "y":0.7654450261780105,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":11
+   },
+   {  
+      "name":"Perandus Manor Chateau Map",
+      "x":0.6507853403141368,
+      "y":0.3204188481675393,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":11
+   },
+   {  
+      "name":"Oba's Cursed Trove Torture Chamber Map",
+      "x":0.43933246073298404,
+      "y":0.7706806282722513,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":11
+   },
+   {  
+      "name":"Shipyard Map",
+      "x":0.30032722513088916,
+      "y":0.3622565445026178,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":12
+   },
+   {  
+      "name":"Ivory Temple Map",
+      "x":0.3631727748691093,
+      "y":0.6785340314136126,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":12
+   },
+   {  
+      "name":"Residence Map",
+      "x":0.43720942408376934,
+      "y":0.7182303664921466,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":12
+   },
+   {  
+      "name":"Crematorium Map",
+      "x":0.6042539267015712,
+      "y":0.36120942408376966,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":12
+   },
+   {  
+      "name":"Estuary Map",
+      "x":0.6607984293193725,
+      "y":0.4407905759162304,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":12
+   },
+   {  
+      "name":"Necropolis Map",
+      "x":0.6046649214659691,
+      "y":0.7225130890052356,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":12
+   },
+   {  
+      "name":"Vault Map",
+      "x":0.4664267015706805,
+      "y":0.7664921465968586,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":12
+   },
+   {  
+      "name":"Plateau Map",
+      "x":0.46919371727748677,
+      "y":0.6586387434554973,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":12
+   },
+   {  
+      "name":"Death and Taxes Necropolis Map",
+      "x":0.619924083769634,
+      "y":0.7393612565445026,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":12
+   },
+   {  
+      "name":"Gorge Map",
+      "x":0.5388743455497383,
+      "y":0.7811518324607329,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":13
+   },
+   {  
+      "name":"Scriptorium Map",
+      "x":0.4261963350785337,
+      "y":0.631413612565445,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":13
+   },
+   {  
+      "name":"Plaza Map",
+      "x":0.3863219895287953,
+      "y":0.6397905759162303,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":13
+   },
+   {  
+      "name":"High Gardens Map",
+      "x":0.3221204188481667,
+      "y":0.4869109947643979,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":13
+   },
+   {  
+      "name":"Waterways Map",
+      "x":0.37159685863874287,
+      "y":0.4167539267015707,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":13
+   },
+   {  
+      "name":"Beacon Map",
+      "x":0.6974947643979067,
+      "y":0.5109476439790576,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":13
+   },
+   {  
+      "name":"Sulphur Wastes Map",
+      "x":0.6294031413612571,
+      "y":0.46810994764397906,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":13
+   },
+   {  
+      "name":"Lair Map",
+      "x":0.6299921465968592,
+      "y":0.6491675392670158,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":13
+   },
+   {  
+      "name":"Palace Map",
+      "x":0.3674738219895282,
+      "y":0.47010994764397906,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":14
+   },
+   {  
+      "name":"Maze Map",
+      "x":0.40045811518324564,
+      "y":0.556020942408377,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":14
+   },
+   {  
+      "name":"Springs Map",
+      "x":0.42248429319371694,
+      "y":0.39467015706806285,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":14
+   },
+   {  
+      "name":"Volcano Map",
+      "x":0.6292251308900529,
+      "y":0.5486910994764398,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":14
+   },
+   {  
+      "name":"Mineral Pools Map",
+      "x":0.5954188481675396,
+      "y":0.581151832460733,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":14
+   },
+   {  
+      "name":"Shrine Map",
+      "x":0.5376963350785342,
+      "y":0.7319371727748691,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":14
+   },
+   {  
+      "name":"Colosseum Map",
+      "x":0.43579842931937146,
+      "y":0.5455497382198953,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":15
+   },
+   {  
+      "name":"Dark Forest Map",
+      "x":0.408704188481675,
+      "y":0.4544502617801047,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":15
+   },
+   {  
+      "name":"Abyss Map",
+      "x":0.5783376963350789,
+      "y":0.6596387434554973,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":15
+   },
+   {  
+      "name":"Overgrown Ruin Map",
+      "x":0.4589476439790574,
+      "y":0.35906806282722514,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":15
+   },
+   {  
+      "name":"Core Map",
+      "x":0.5960078534031418,
+      "y":0.44597905759162304,
+      "radius":1,
+      "selected":false,
+      "completed":true,
+      "tier":15
+   },
+   {  
+      "name":"Pit of the Chimera Map",
+      "x":0.4611256544502616,
+      "y":0.5905759162303665,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":16
+   },
+   {  
+      "name":"Maze of the Minotaur Map",
+      "x":0.554777486910995,
+      "y":0.5916230366492147,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":16
+   },
+   {  
+      "name":"Forge of the Phoenix Map",
+      "x":0.5545994764397908,
+      "y":0.4198952879581152,
+      "radius":1,
+      "selected":false,
+      "completed":true,
+      "tier":16
+   },
+   {  
+      "name":"Lair of the Hydra Map",
+      "x":0.4587696335078532,
+      "y":0.4157068062827225,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":16
+   },
+   {  
+      "name":"Vaal Temple Map",
+      "x":0.3611727748691093,
+      "y":0.5329371727748691,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":16
+   },
+   {  
+      "name":"The Shaper's Realm",
+      "x":0.524149214659686,
+      "y":0.5109476439790576,
+      "radius":1,
+      "selected":false,
+      "completed":false,
+      "tier":17
+   }   
+]
