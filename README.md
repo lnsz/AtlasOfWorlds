@@ -1,5 +1,7 @@
 https://lucaslunasouza.github.io/AtlasOfWorlds/
 
+![Alt text](http://i.imgur.com/24JKTOV.jpg)
+
 Path of Exile, an online Action RPG. It's endgame content is focused around maps, which are items that can be activated to generate a
 level. The Atlas of Worlds expansion introduced the atlas, which connects maps in a way that allows players to navigate through them 
 with the goal of reaching the center, which is where the hardest maps are located.
